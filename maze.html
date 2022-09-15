@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Maze</title>
+  </head>
+  <body>
+    <div class="top">
+      <div class="topContainer">
+        <h1 class="header">Лабиринт</h1>
+
+        <input
+          id="userX"
+          class="userX"
+          type="text"
+          max="23"
+          placeholder="Высота лабиринта Max 20"
+          value=""
+        />
+        <br />
+
+        <label>
+          <input
+            id="userY"
+            class="userY"
+            type="text"
+            placeholder="Ширина лабиринта Max 20"
+            value=""
+          />
+        </label>
+
+        <br />
+        <button id="button" onclick="makeMaze()">Создать!!!</button>
+        <button id="test" class="bbb" onclick="newGame()">Сброс</button>
+      </div>
+    </div>
+
+    <br />
+    <div class="parent">
+      <div id="table" class="tableBody"></div>
+    </div>
+  </body>
+
+  <script src="maze.js"></script>
+</html>

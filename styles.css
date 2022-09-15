@@ -1,0 +1,214 @@
+body {
+  background-color: #393b44;
+}
+.header {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  text-align: center;
+  color: #d6e0f0;
+}
+
+.userX {
+  width: 200px;
+  height: 30px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 143px;
+  padding-left: 10px;
+  /* border-color: rgb(95, 94, 94); */
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 0 7px 0 black;
+  border: 0;
+  border-radius: 15px;
+  background-color: #ebecf1;
+  color: #57514f;
+}
+.userY {
+  width: 200px;
+  height: 30px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 143px;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 0 7px 0 black;
+  border: 0;
+  border-radius: 15px;
+  background-color: #ebecf1;
+  color: #57514f;
+}
+
+.inputHeight {
+  font-size: 22px;
+  margin-right: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+}
+.inputWidth {
+  font-size: 22px;
+  margin-right: 5px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+}
+.topContainer {
+  /* background-color: aqua; */
+  width: 500px;
+  margin: 0 auto;
+  /* text-align: center; */
+  /* border: white solid 1px; */
+}
+.top {
+  margin: 0 auto;
+}
+
+#button {
+  width: 210px;
+  height: 30px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 143px;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 0 7px 0 black;
+  border: 0;
+  border-radius: 15px;
+  background-color: #8d93ab;
+  font-size: 13px;
+}
+.bbb {
+  width: 210px;
+  height: 30px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 143px;
+  padding-left: 10px;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 0 7px 0 black;
+  border: 0;
+  border-radius: 15px;
+  background-color: #8d93ab;
+  font-size: 13px;
+}
+
+.maze {
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+}
+.tableBody {
+  z-index: 1;
+  /* text-align: center; */
+  position: relative;
+  background-color: rgb(255, 0, 0);
+  width: auto;
+  height: auto;
+
+  border: black solid 0.5px;
+  display: inline-block;
+
+  /* overflow: auto; */
+}
+
+.tablecell {
+  width: 60px;
+  height: 60px;
+  background-color: #8d93ab;
+  border: black solid 0.5px;
+  display: table-cell;
+}
+
+.tablerow {
+  width: 60px;
+  height: 60px;
+  background-color: #8d93ab;
+  border: black solid 0.5px;
+  display: table-row;
+}
+
+.string {
+  width: 60px;
+  height: 60px;
+  background-color: #8d93ab;
+  border: black solid 0.5px;
+}
+
+.square {
+  width: 60px;
+  height: 60px;
+  background-color: #8d93ab;
+
+  border: #8d93ab solid 1px;
+  /* border: black solid 0.5px; */
+  float: left;
+}
+
+.gg {
+  z-index: 2;
+  width: 58px;
+  height: 58px;
+  left: 0px;
+  top: 0px;
+  background-color: #d6e0f0;
+  /* border-radius: 50%; */
+  box-shadow: 0 0 7px 0 black;
+  border: 0;
+  border-radius: 40px;
+  position: absolute;
+  /* text-align: center; */
+
+  transition-property: left, top;
+  transition-duration: 1s;
+}
+
+.finish {
+  text-align: center;
+  margin: auto;
+  background-color: #8d93ab;
+  content: "finish";
+}
+.finish ::before {
+  content: "fff";
+}
+
+.win {
+  animation-duration: 0.3s;
+  animation-name: flashWin;
+  animation-iteration-count: 4;
+}
+@keyframes flashWin {
+  from {
+    border: 6px green solid;
+  }
+  to {
+    border: 2px black solid;
+  }
+}
+
+.parent {
+  text-align: center;
+}
+
+@media screen and (max-width: 1280px) {
+  .gg {
+    width: 45px;
+    height: 45px;
+  }
+
+  .square {
+    width: 45px;
+    height: 45px;
+  }
+  .tablerow {
+    width: 45px;
+    height: 45px;
+  }
+  .tablecell {
+    width: 45px;
+    height: 45px;
+  }
+  .string {
+    width: 45px;
+    height: 45px;
+  }
+}
