@@ -261,4 +261,25 @@ body {
     text-align: center;
     margin: 2% auto;
   }
+  .keyboard {
+    width: auto;
+    height: 300px;
+    background-color: blue;
+  }
+  .left {
+    width: 80px;
+    height: 80px;
+  }
+  .right {
+    width: 80px;
+    height: 80px;
+  }
+  .up {
+    width: 80px;
+    height: 80px;
+  }
+  .down {
+    width: 80px;
+    height: 80px;
+  }
 }

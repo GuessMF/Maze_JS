@@ -64,6 +64,33 @@ function makeMazee() {
   let numS; //Рандомное число для стен
   let numV; // Рандомное число для потолков
 
+  if (screen.width <= 420) {
+    let keyboard = document.createElement("div"); // создание главного героя
+    keyboard.className = "keyboard";
+    keyboard.classList.add("keyboard");
+    keyboard.innerHTML = "";
+    bottom.append(keyboard); // стартовая клетка для главного героя
+    // keyboard.classList.add("keyboard");
+    let left = document.createElement("button");
+    left.className = "left";
+    left.innerHTML = "←";
+    keyboard.append(left);
+
+    let right = document.createElement("button");
+    right.className = "right";
+    right.innerHTML = "→";
+    keyboard.append(right);
+
+    let up = document.createElement("button");
+    up.className = "up";
+    up.innerHTML = "↑";
+    keyboard.append(up);
+
+    let down = document.createElement("button");
+    down.className = "up";
+    down.innerHTML = "↓";
+    keyboard.append(down);
+  }
   console.log(numX);
   console.log(numY);
 
@@ -250,6 +277,84 @@ window.onkeydown = function move() {
   }
 };
 
+bottom.addEventListener("click", () => {
+  stenaX; //стены
+  stenaY;
+  verhX; //потолки
+  verhY;
+
+  let GG = document.getElementById("gg");
+  let maxWidth = (userY - 1) * step;
+  let maxHeight = (userX - 1) * step;
+  if (event.target.innerHTML == "←" && x !== 0) {
+    //идем влево
+    function border37() {
+      //стена для стрелки влево
+      for (i = 0; i < dlinaS; i++) {
+        if (x == stenaX[i] * step && y == stenaY[i] * step) {
+          console.log("Стена слева" + stenaX[i] + " " + stenaY[i]);
+          x = x + step;
+        }
+      }
+    }
+    border37();
+    x = x - step;
+    GG.style.left = x + "px";
+    console.log("x = " + x + " y = " + y);
+    finish();
+  } else if (event.target.innerHTML == "→" && x !== maxWidth) {
+    //идем вправо
+    function border39() {
+      //стена для стрелки вправо
+      for (i = 0; i < dlinaS; i++) {
+        if (x == stenaX[i] * step - step && y == stenaY[i] * step) {
+          console.log("Стена справа" + stenaX[i] + " " + stenaY[i]);
+          x = x - step;
+        }
+      }
+    }
+    border39();
+    x = x + step;
+    GG.style.left = x + "px";
+    console.log("x = " + x + " y = " + y);
+    finish();
+  } else if ((event.innerHTML = "↓" && y !== maxHeight)) {
+    // идем вниз
+
+    function border40() {
+      // стена для стрелки вниз
+      for (i = 0; i < dlinaV; i++) {
+        if (x == verhX[i] * step && y == verhY[i] * step - step) {
+          console.log("Потолок внизу" + verhX[i] + " " + verhY[i]);
+          y = y - step;
+        }
+      }
+    }
+    border40();
+    y = y + step;
+    GG.style.top = y + "px";
+    console.log("x = " + x + " y = " + y);
+    finish();
+    // console.log(y);
+  } else if ((event.innerHTML = "↑" && y !== 0)) {
+    // идем вверх
+    function border38() {
+      // стена для стрелки вверх
+      for (i = 0; i < dlinaV; i++) {
+        if (x == verhX[i] * step && y == verhY[i] * step) {
+          console.log("Потолок наверху" + verhX[i] + " " + verhY[i]);
+          y = y + step;
+        }
+      }
+    }
+    border38();
+    y = y - step;
+    GG.style.top = y + "px";
+    console.log("x = " + x + " y = " + y);
+    finish();
+  }
+});
+
 function resizeGame() {
   if ((x !== 0 || y !== 0) && screen.width <= 1280) {
     newGame();
@@ -274,5 +379,15 @@ window.onload = () => {
     step = 47;
   }
 };
+
+// if (screen.width <= 420) {
+//   let keyboard = document.createElement("div"); // создание главного героя
+//   keyboard.className = "keyboard";
+//   keyboard.classList.add("keyboard");
+//   keyboard.innerHTML = "";
+//   bottom.append(keyboard); // стартовая клетка для главного героя
+
+//   keyboard.classList.add("keyboard");
+// }
 //отследить положение х и у и при изменении разрешения менять их значения согласно изменению
 //проверять значение х и у сет интервалом или при именении разрешения
