@@ -87,7 +87,7 @@ function makeMazee() {
     keyboard.append(up);
 
     let down = document.createElement("button");
-    down.className = "up";
+    down.className = "down";
     down.innerHTML = "↓";
     keyboard.append(down);
   }
@@ -288,31 +288,14 @@ bottom.addEventListener("click", () => {
   let maxHeight = (userX - 1) * step;
   if (event.target.innerHTML == "←" && x !== 0) {
     //идем влево
-    function border37() {
-      //стена для стрелки влево
-      for (i = 0; i < dlinaS; i++) {
-        if (x == stenaX[i] * step && y == stenaY[i] * step) {
-          console.log("Стена слева" + stenaX[i] + " " + stenaY[i]);
-          x = x + step;
-        }
-      }
-    }
     border37();
     x = x - step;
     GG.style.left = x + "px";
     console.log("x = " + x + " y = " + y);
+
     finish();
   } else if (event.target.innerHTML == "→" && x !== maxWidth) {
     //идем вправо
-    function border39() {
-      //стена для стрелки вправо
-      for (i = 0; i < dlinaS; i++) {
-        if (x == stenaX[i] * step - step && y == stenaY[i] * step) {
-          console.log("Стена справа" + stenaX[i] + " " + stenaY[i]);
-          x = x - step;
-        }
-      }
-    }
     border39();
     x = x + step;
     GG.style.left = x + "px";
@@ -320,16 +303,6 @@ bottom.addEventListener("click", () => {
     finish();
   } else if ((event.innerHTML = "↓" && y !== maxHeight)) {
     // идем вниз
-
-    function border40() {
-      // стена для стрелки вниз
-      for (i = 0; i < dlinaV; i++) {
-        if (x == verhX[i] * step && y == verhY[i] * step - step) {
-          console.log("Потолок внизу" + verhX[i] + " " + verhY[i]);
-          y = y - step;
-        }
-      }
-    }
     border40();
     y = y + step;
     GG.style.top = y + "px";
@@ -338,20 +311,51 @@ bottom.addEventListener("click", () => {
     // console.log(y);
   } else if ((event.innerHTML = "↑" && y !== 0)) {
     // идем вверх
-    function border38() {
-      // стена для стрелки вверх
-      for (i = 0; i < dlinaV; i++) {
-        if (x == verhX[i] * step && y == verhY[i] * step) {
-          console.log("Потолок наверху" + verhX[i] + " " + verhY[i]);
-          y = y + step;
-        }
-      }
-    }
     border38();
     y = y - step;
     GG.style.top = y + "px";
     console.log("x = " + x + " y = " + y);
     finish();
+  }
+
+  function border37() {
+    //стена для стрелки влево
+    for (i = 0; i < dlinaS; i++) {
+      if (x == stenaX[i] * step && y == stenaY[i] * step) {
+        console.log("Стена слева" + stenaX[i] + " " + stenaY[i]);
+        x = x + step;
+      }
+    }
+  }
+
+  function border39() {
+    //стена для стрелки вправо
+    for (i = 0; i < dlinaS; i++) {
+      if (x == stenaX[i] * step - step && y == stenaY[i] * step) {
+        console.log("Стена справа" + stenaX[i] + " " + stenaY[i]);
+        x = x - step;
+      }
+    }
+  }
+
+  function border38() {
+    // стена для стрелки вверх
+    for (i = 0; i < dlinaV; i++) {
+      if (x == verhX[i] * step && y == verhY[i] * step) {
+        console.log("Потолок наверху" + verhX[i] + " " + verhY[i]);
+        y = y + step;
+      }
+    }
+  }
+
+  function border40() {
+    // стена для стрелки вниз
+    for (i = 0; i < dlinaV; i++) {
+      if (x == verhX[i] * step && y == verhY[i] * step - step) {
+        console.log("Потолок внизу" + verhX[i] + " " + verhY[i]);
+        y = y - step;
+      }
+    }
   }
 });
 
