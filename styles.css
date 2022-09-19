@@ -212,3 +212,9 @@ body {
     height: 45px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  body {
+    width: auto;
+  }
+}
