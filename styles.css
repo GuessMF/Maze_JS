@@ -303,7 +303,6 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #d6e0f0;
   }
   .left {
     width: 80px;
