@@ -284,6 +284,9 @@ body {
     text-align: center;
     margin: 2% auto;
   }
+  .finish {
+    font-size: 10px;
+  }
   .keyboard {
     width: auto;
     height: 300px;
