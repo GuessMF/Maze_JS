@@ -1,5 +1,6 @@
 body {
   background-color: #393b44;
+  touch-action: manipulation;
 }
 .header {
   font-family: "Roboto", sans-serif;
