@@ -5,7 +5,7 @@ let stenaX = []; // положение в ряду стены
 let stenaY = []; // номер ряда стены
 let dlinaS; // длина массива со стенами
 let step = 62; //длина шага ГГ
-
+let maxSq = 20;
 let verhX = []; // положение в ряду потолка
 let verhY = []; // номер ряда потолка
 let dlinaV; // длина массива с потолками
@@ -38,18 +38,19 @@ function width() {
 
 function makeMaze() {
   if (
-    userX.value <= 20 &&
-    userY.value <= 20 &&
+    userX.value <= maxSq &&
+    userY.value <= maxSq &&
     userY.value > 0 &&
     userX.value > 0
   ) {
     makeMazee();
+    console.log(maxSq);
   } else if (stat == true) {
     alert("Вы уже играете");
   } else if (userY.value <= 0 || userX.value <= 0) {
     alert("Введите второе число");
   } else {
-    alert("Введите число меньше 20");
+    alert("Введите число меньше " + `${maxSq}`);
   }
 }
 
@@ -372,8 +373,10 @@ window.addEventListener("resize", (event) => {
   resize = true;
   if (screen.width <= 1280) {
     step = 47;
+    maxSq = 11;
   } else if (screen.width >= 1280) {
     step = 62;
+    maxSq = 20;
   }
   resizeGame();
 });
@@ -381,6 +384,18 @@ window.addEventListener("resize", (event) => {
 window.onload = () => {
   if (screen.width <= 1280) {
     step = 47;
+  } else {
+    maxSq = 20;
+  }
+};
+
+window.onload = () => {
+  if (screen.width <= 420) {
+    step = 32;
+    maxSq = 11;
+    userX.placeholder = "Высота лабиринта Max 11";
+    userY.placeholder = "Ширина лабиринта Max 11";
+    console.log(userX.value);
   }
 };
 

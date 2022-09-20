@@ -217,6 +217,27 @@ body {
   body {
     width: auto;
   }
+  .gg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .square {
+    width: 30px;
+    height: 30px;
+  }
+  .tablerow {
+    width: 30px;
+    height: 30px;
+  }
+  .tablecell {
+    width: 30px;
+    height: 30px;
+  }
+  .string {
+    width: 30px;
+    height: 30px;
+  }
   .top {
     width: auto;
   }
@@ -233,11 +254,13 @@ body {
     margin: 2% 10%;
     width: 190px;
     height: 25px;
+    text-align: center;
   }
   .userY {
     margin: 1% 10%;
     width: 170px;
     height: 25px;
+    text-align: center;
   }
   .inputHeight {
     width: auto;
@@ -264,22 +287,49 @@ body {
   .keyboard {
     width: auto;
     height: 300px;
-    background-color: blue;
   }
   .left {
     width: 80px;
     height: 80px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    margin-right: 10px;
+    background-color: #8d93ab;
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 0 7px 0 black;
   }
   .right {
     width: 80px;
     height: 80px;
+    margin-right: 25px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    background-color: #8d93ab;
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 0 7px 0 black;
   }
   .up {
     width: 80px;
     height: 80px;
+    border-radius: 50%;
+    border: none;
+    margin-right: 10px;
+    font-size: 20px;
+    background-color: #8d93ab;
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 0 7px 0 black;
   }
   .down {
     width: 80px;
     height: 80px;
+    border-radius: 50%;
+    border: none;
+
+    font-size: 20px;
+    background-color: #8d93ab;
+    font-family: "Roboto", sans-serif;
+    box-shadow: 0 0 7px 0 black;
   }
 }
