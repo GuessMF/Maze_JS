@@ -303,6 +303,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: #d6e0f0;
   }
   .left {
     width: 80px;
@@ -313,6 +314,7 @@ body {
     background-color: #8d93ab;
     font-family: "Roboto", sans-serif;
     box-shadow: 0 0 7px 0 black;
+    touch-action: manipulation;
   }
   .right {
     width: 80px;
@@ -324,6 +326,7 @@ body {
     background-color: #8d93ab;
     font-family: "Roboto", sans-serif;
     box-shadow: 0 0 7px 0 black;
+    touch-action: manipulation;
   }
   .up {
     width: 80px;
@@ -335,6 +338,7 @@ body {
     background-color: #8d93ab;
     font-family: "Roboto", sans-serif;
     box-shadow: 0 0 7px 0 black;
+    touch-action: manipulation;
   }
   .down {
     width: 80px;
@@ -345,6 +349,7 @@ body {
     background-color: #8d93ab;
     font-family: "Roboto", sans-serif;
     box-shadow: 0 0 7px 0 black;
+    touch-action: manipulation;
   }
   .githubLogo {
     /* margin: auto;
