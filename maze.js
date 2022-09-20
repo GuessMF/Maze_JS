@@ -301,7 +301,7 @@ bottom.addEventListener("click", () => {
     GG.style.left = x + "px";
     console.log("x = " + x + " y = " + y);
     finish();
-  } else if ((event.innerHTML = "↓" && y !== maxHeight)) {
+  } else if (event.target.innerHTML == "↓" && y !== maxHeight) {
     // идем вниз
     border40();
     y = y + step;
@@ -309,7 +309,7 @@ bottom.addEventListener("click", () => {
     console.log("x = " + x + " y = " + y);
     finish();
     // console.log(y);
-  } else if ((event.innerHTML = "↑" && y !== 0)) {
+  } else if (event.target.innerHTML == "↑" && y !== 0) {
     // идем вверх
     border38();
     y = y - step;
