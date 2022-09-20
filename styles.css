@@ -1,6 +1,12 @@
+html {
+  /* height: 100%; */
+}
 body {
   background-color: #393b44;
   touch-action: manipulation;
+  /* min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto; */
 }
 .header {
   font-family: "Roboto", sans-serif;
@@ -188,10 +194,12 @@ body {
 
 .parent {
   text-align: center;
+  margin-top: 0;
 }
 .footer {
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 5px;
 }
 
 .githubLogo {
