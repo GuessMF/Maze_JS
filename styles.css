@@ -190,22 +190,10 @@ body {
 }
 .footer {
   text-align: center;
+  margin: 0 auto;
+}
 
-  margin: 0 auto;
-}
-.reserved {
-  /* width: 300px;
-  margin: 0 auto;
-  text-align: center;
-  white-space: pre-wrap; */
-}
-.gitHubLink {
-  /* margin: 2% auto; */
-}
 .githubLogo {
-  /* text-align: center;
-  margin: auto;
-  */
   width: 50px;
   height: 50px;
 }
