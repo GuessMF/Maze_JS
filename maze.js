@@ -44,7 +44,7 @@ function makeMaze() {
     userX.value > 0
   ) {
     makeMazee();
-    console.log(maxSq);
+    console.log(maxSq + " maxSq");
   } else if (stat == true) {
     alert("Вы уже играете");
   } else if (userY.value <= 0 || userX.value <= 0) {
@@ -92,8 +92,8 @@ function makeMazee() {
     down.innerHTML = "↓";
     keyboard.append(down);
   }
-  console.log(numX);
-  console.log(numY);
+  console.log(numX + " NumX");
+  console.log(numY + " NumY");
 
   for (m = 0; m < numX; m++) {
     // создает в tableBody square и string перебираем высоту
@@ -395,10 +395,29 @@ window.onload = () => {
     maxSq = 11;
     userX.placeholder = "Высота лабиринта Max 11";
     userY.placeholder = "Ширина лабиринта Max 11";
-    console.log(userX.value);
+    // console.log(userX.value);
   }
 };
 
+// function noScroll() {
+//  if(event.key)
+// }
+// noScroll();
+
+function noScroll() {
+  target = document.querySelector("#gg");
+  targetPosition = {
+    top: window.pageYOffset + target.getBoundingClientRect().top,
+    left: window.pageXOffset + target.getBoundingClientRect().left,
+    right: window.pageXOffset + target.getBoundingClientRect().right,
+    bottom: window.pageYOffset + target.getBoundingClientRect().bottom,
+  };
+  console.log(targetPosition.top);
+}
+//noScroll();
+console.log(window.pageYOffset);
+
+//console.log(screen.width);
 // if (screen.width <= 420) {
 //   let keyboard = document.createElement("div"); // создание главного героя
 //   keyboard.className = "keyboard";
