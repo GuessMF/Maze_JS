@@ -208,13 +208,16 @@ window.onkeydown = function move() {
 
   if (event.keyCode == 37 && x !== 0) {
     //идем влево
+    document.body.style.overflow = "auto";
     border37();
+
     x = x - step;
     GG.style.left = x + "px";
     console.log("x = " + x + " y = " + y);
     finish();
   } else if (event.keyCode == 39 && x !== maxWidth) {
     //идем вправо
+    document.body.style.overflow = "auto";
     border39();
     x = x + step;
     GG.style.left = x + "px";
@@ -222,6 +225,7 @@ window.onkeydown = function move() {
     finish();
   } else if (event.keyCode == 40 && y !== maxHeight) {
     // идем вниз
+    document.body.style.overflow = "auto";
     border40();
     y = y + step;
     GG.style.top = y + "px";
@@ -230,6 +234,7 @@ window.onkeydown = function move() {
     // console.log(y);
   } else if (event.keyCode == 38 && y !== 0) {
     // идем вверх
+    document.body.style.overflow = "auto";
     border38();
     y = y - step;
     GG.style.top = y + "px";
@@ -243,6 +248,7 @@ window.onkeydown = function move() {
       if (x == stenaX[i] * step && y == stenaY[i] * step) {
         console.log("Стена слева" + stenaX[i] + " " + stenaY[i]);
         x = x + step;
+        document.body.style.overflow = "hidden";
       }
     }
   }
@@ -253,6 +259,7 @@ window.onkeydown = function move() {
       if (x == stenaX[i] * step - step && y == stenaY[i] * step) {
         console.log("Стена справа" + stenaX[i] + " " + stenaY[i]);
         x = x - step;
+        document.body.style.overflow = "hidden";
       }
     }
   }
@@ -263,6 +270,7 @@ window.onkeydown = function move() {
       if (x == verhX[i] * step && y == verhY[i] * step) {
         console.log("Потолок наверху" + verhX[i] + " " + verhY[i]);
         y = y + step;
+        document.body.style.overflow = "hidden";
       }
     }
   }
@@ -273,6 +281,7 @@ window.onkeydown = function move() {
       if (x == verhX[i] * step && y == verhY[i] * step - step) {
         console.log("Потолок внизу" + verhX[i] + " " + verhY[i]);
         y = y - step;
+        document.body.style.overflow = "hidden";
       }
     }
   }
@@ -355,39 +364,43 @@ bottom.addEventListener("click", () => {
       if (x == verhX[i] * step && y == verhY[i] * step - step) {
         console.log("Потолок внизу" + verhX[i] + " " + verhY[i]);
         y = y - step;
+        document.body.style.overflow = "hidden";
       }
     }
   }
 });
 
-function resizeGame() {
-  if ((x !== 0 || y !== 0) && screen.width <= 1280) {
-    newGame();
-  } else if ((x !== 0 || y !== 0) && screen.width >= 1280) {
-    newGame();
-  }
-}
-resizeGame();
+// function resizeGame() {
+//   if ((x !== 0 || y !== 0) && screen.width <= 1280) {
+//     newGame();
+//   } else if ((x !== 0 || y !== 0) && screen.width >= 1280) {
+//     newGame();
+//   }
+// }
+// resizeGame();
 
-window.addEventListener("resize", (event) => {
-  resize = true;
-  if (screen.width <= 1280) {
-    step = 47;
-    maxSq = 11;
-  } else if (screen.width >= 1280) {
-    step = 62;
-    maxSq = 20;
-  }
-  resizeGame();
-});
+// window.addEventListener("resize", (event) => {
+//   resize = true;
+//   if (screen.width <= 1370) {
+//     step = 47;
+//     maxSq = 11;
+//     document.querySelector(".parent").style.overflow = "scroll";
+//   } else if (screen.width >= 1370) {
+//     step = 62;
+//     maxSq = 20;
+//   }
+//   resizeGame();
+// });
 
-window.onload = () => {
-  if (screen.width <= 1280) {
-    step = 47;
-  } else {
-    maxSq = 20;
-  }
-};
+// window.onload = () => {
+//   if (screen.width <= 1280) {
+//     step = 47;
+//     noScroll();
+//   } else {
+//     maxSq = 20;
+//     noScroll();
+//   }
+// };
 
 window.onload = () => {
   if (screen.width <= 420) {
@@ -398,34 +411,3 @@ window.onload = () => {
     // console.log(userX.value);
   }
 };
-
-// function noScroll() {
-//  if(event.key)
-// }
-// noScroll();
-
-function noScroll() {
-  target = document.querySelector("#gg");
-  targetPosition = {
-    top: window.pageYOffset + target.getBoundingClientRect().top,
-    left: window.pageXOffset + target.getBoundingClientRect().left,
-    right: window.pageXOffset + target.getBoundingClientRect().right,
-    bottom: window.pageYOffset + target.getBoundingClientRect().bottom,
-  };
-  console.log(targetPosition.top);
-}
-//noScroll();
-console.log(window.pageYOffset);
-
-//console.log(screen.width);
-// if (screen.width <= 420) {
-//   let keyboard = document.createElement("div"); // создание главного героя
-//   keyboard.className = "keyboard";
-//   keyboard.classList.add("keyboard");
-//   keyboard.innerHTML = "";
-//   bottom.append(keyboard); // стартовая клетка для главного героя
-
-//   keyboard.classList.add("keyboard");
-// }
-//отследить положение х и у и при изменении разрешения менять их значения согласно изменению
-//проверять значение х и у сет интервалом или при именении разрешения

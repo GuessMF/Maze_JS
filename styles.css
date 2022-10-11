@@ -7,6 +7,7 @@ body {
   /* min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto; */
+  overflow: auto;
 }
 .header {
   font-family: "Roboto", sans-serif;
@@ -108,9 +109,12 @@ body {
   /* text-align: center; */
   position: relative;
   background-color: rgb(255, 0, 0);
-  width: auto;
-  height: auto;
+  /* width: auto;
+  height: auto; */
+  width: max-content;
+  height: max-content;
 
+  overflow: scroll;
   border: black solid 0.5px;
   display: inline-block;
 
@@ -207,7 +211,7 @@ body {
   height: 50px;
 }
 
-@media screen and (max-width: 1280px) {
+/* @media screen and (max-width: 1280px) {
   .gg {
     width: 45px;
     height: 45px;
@@ -229,7 +233,7 @@ body {
     width: 45px;
     height: 45px;
   }
-}
+} */
 
 @media screen and (max-width: 420px) {
   body {
