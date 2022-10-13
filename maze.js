@@ -5,7 +5,8 @@ let stenaX = []; // положение в ряду стены
 let stenaY = []; // номер ряда стены
 let dlinaS; // длина массива со стенами
 let step = 62; //длина шага ГГ
-let maxSq = 20;
+let steps = 0;
+let maxSq = 100;
 let verhX = []; // положение в ряду потолка
 let verhY = []; // номер ряда потолка
 let dlinaV; // длина массива с потолками
@@ -208,15 +209,18 @@ window.onkeydown = function move() {
 
   if (event.keyCode == 37 && x !== 0) {
     //идем влево
+    window.scrollTo(x - step, y);
+
     document.body.style.overflow = "auto";
     border37();
-
     x = x - step;
     GG.style.left = x + "px";
     console.log("x = " + x + " y = " + y);
     finish();
   } else if (event.keyCode == 39 && x !== maxWidth) {
     //идем вправо
+    window.scrollTo(x - step, y);
+
     document.body.style.overflow = "auto";
     border39();
     x = x + step;
@@ -225,6 +229,11 @@ window.onkeydown = function move() {
     finish();
   } else if (event.keyCode == 40 && y !== maxHeight) {
     // идем вниз
+    window.scrollTo(x - step, y);
+    // window.scrollTo({
+    //   top: x,
+    //   behavior: "smooth",
+    // });
     document.body.style.overflow = "auto";
     border40();
     y = y + step;
@@ -234,6 +243,8 @@ window.onkeydown = function move() {
     // console.log(y);
   } else if (event.keyCode == 38 && y !== 0) {
     // идем вверх
+    window.scrollTo(x - step, y);
+
     document.body.style.overflow = "auto";
     border38();
     y = y - step;
@@ -286,6 +297,13 @@ window.onkeydown = function move() {
     }
   }
 };
+
+// ()=>{
+//   if()
+//   steps % 2 == 0
+//   ? (document.body.style.overflow = "hidden")
+//   : console.log("0");
+// }
 
 bottom.addEventListener("click", () => {
   stenaX; //стены
@@ -411,3 +429,4 @@ window.onload = () => {
     // console.log(userX.value);
   }
 };
+console.log(steps);
