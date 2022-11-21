@@ -105,12 +105,23 @@ function makeMazee() {
     height(); //рисовка высоты
   }
 
-  let gg = document.createElement("div"); // создание главного героя
+  // let gg = document.createElement("div"); // создание главного героя
+  // gg.className = "gg";
+  // gg.id = "gg";
+  // gg.style.left = "0px";
+  // gg.style.top = "0px";
+  // gg.innerHTML ='' ;
+
+  let gg = document.createElement("img");
+  gg.setAttribute("src", "images/avatar2.png");
   gg.className = "gg";
   gg.id = "gg";
   gg.style.left = "0px";
+  gg.style.width = 100;
+  gg.style.height = 100;
   gg.style.top = "0px";
   gg.innerHTML = "";
+
   divs[0].append(gg); // стартовая клетка для главного героя
   dl = divs.length; //колличество клеток в лабиринте
   dl2 = dl - 1; // последняя кледка в лабиринте для финиша
@@ -184,6 +195,7 @@ function finish() {
   //отслеживает положение последней клетки
   if (x == (userY - 1) * step && y == (userX - 1) * step) {
     console.log("FINISH");
+    gg.setAttribute("src", "images/finish.jpg");
     table.classList.add("win");
 
     setTimeout(() => {
@@ -430,3 +442,10 @@ window.onload = () => {
   }
 };
 console.log(steps);
+
+let ph = document.createElement("img");
+ph.setAttribute("src", "images/github4x.png");
+ph.class = "gg";
+
+foo = document.querySelector(".footer");
+foo.append(ph);
