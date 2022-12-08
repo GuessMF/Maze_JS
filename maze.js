@@ -45,7 +45,7 @@ function makeMaze() {
     userX.value > 0
   ) {
     makeMazee();
-    console.log(maxSq + " maxSq");
+    // console.log(maxSq + " maxSq");
   } else if (stat == true) {
     alert("Вы уже играете");
   } else if (userY.value <= 0 || userX.value <= 0) {
@@ -93,8 +93,8 @@ function makeMazee() {
     down.innerHTML = "↓";
     keyboard.append(down);
   }
-  console.log(numX + " NumX");
-  console.log(numY + " NumY");
+  // console.log(numX + " NumX");
+  // console.log(numY + " NumY");
 
   for (m = 0; m < numX; m++) {
     // создает в tableBody square и string перебираем высоту
@@ -127,12 +127,12 @@ function makeMazee() {
   dl2 = dl - 1; // последняя кледка в лабиринте для финиша
   divs[dl2].classList.add("finish");
   divs[dl2].innerHTML = "finish";
-
+  console.log(divs);
   for (n = 1; n < Math.floor(dl); n++) {
-    // numV = Math.floor(Math.random() * dl); // первое рандомное
-    // numS = Math.floor(Math.random() * dl); // второе рандомное
-    numV = n;
-    numS = n;
+    numV = Math.floor(Math.random() * dl); // первое рандомное
+    numS = Math.floor(Math.random() * dl); // второе рандомное
+    // numV = n;
+    // numS = n;
     let nomerRyada;
     let nomervRyady;
 
@@ -140,18 +140,18 @@ function makeMazee() {
     let nomerVRyadyVerh;
 
     // if (numS % userY !== 0 && numS !== userX * userY - 1 && numS % 2 !== 0) {
-    if (numS) {
+    if (numS % userY !== 0 && numS !== userX * userY - 1 && numS % 2 !== 0) {
       // чтобы не добавлял лишние левые границы
       divs[numS].style.borderLeftColor = "black"; // добавляет лево стены
       nomerRyada = Math.floor(numS / userY);
       nomervRyady = numS - nomerRyada * userY;
     }
     if (
-      numV
-      // userY % 2 !== 0 &&
-      // numV > userY &&
-      // numV !== userX * userY - 1 &&
-      // (userY % 2 == 0) == (numV % 2 == 0)
+      // numV
+      userY % 2 !== 0 &&
+      numV > userY &&
+      numV !== userX * userY - 1 &&
+      (userY % 2 == 0) == (numV % 2 == 0)
     ) {
       //для нечетного лабиринта
       divs[numV].style.borderTopColor = "black";
@@ -447,7 +447,7 @@ window.onload = () => {
     // console.log(userX.value);
   }
 };
-console.log(steps);
+//console.log(steps);
 
 // let ph = document.createElement("img");
 // ph.setAttribute("src", "images/github4x.png");
@@ -456,25 +456,25 @@ console.log(steps);
 // foo = document.querySelector(".footer");
 // foo.append(ph);
 
-function matrixArr(length, width) {
-  let matrix = [
-    [0, 0, 0],
-    [0, 0, 0],
-  ];
-  for (w = 0; w < width; w++) {
-    console.log(width);
-    // matrix.push(w);
-  }
-  for (l = 0; l < length; l++) {
-    console.log(length);
-    // matrix.push(Array(0));
-  }
+// function matrixArr(length, width) {
+//   let matrix = [
+//     [0, 0, 0],
+//     [0, 0, 0],
+//   ];
+//   for (w = 0; w < width; w++) {
+//     console.log(width);
+//     // matrix.push(w);
+//   }
+//   for (l = 0; l < length; l++) {
+//     console.log(length);
+//     // matrix.push(Array(0));
+//   }
 
-  console.log(matrix);
-  // let matrix = [];
-  // matrix.push(Array(3));
-  //console.log(matrix);
-  // console.log(length);
-}
-matrixArr(4, 4);
-// console.log(matrix);
+//   console.log(matrix);
+//   // let matrix = [];
+//   // matrix.push(Array(3));
+//   //console.log(matrix);
+//   // console.log(length);
+// }
+// matrixArr(4, 4);
+// // console.log(matrix);
