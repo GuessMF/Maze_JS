@@ -143,6 +143,7 @@ function makeMazee() {
     if (numS % userY !== 0 && numS !== userX * userY - 1 && numS % 2 !== 0) {
       // чтобы не добавлял лишние левые границы
       divs[numS].style.borderLeftColor = "black"; // добавляет лево стены
+      console.log(numS + " NumS");
       nomerRyada = Math.floor(numS / userY);
       nomervRyady = numS - nomerRyada * userY;
     }
@@ -165,6 +166,7 @@ function makeMazee() {
         //отсекаем четные строки
         if (userY % 2 == 0 && numV > userY * (g - 1) && numV < userY * g - 1) {
           divs[numV].style.borderTopColor = "black";
+          console.log(numV + " numV ");
           nomerRyadaVerh = Math.floor(numV / userY);
           nomerVRyadyVerh = numV - nomerRyadaVerh * userY;
         }
@@ -182,6 +184,7 @@ function makeMazee() {
     stenaY = stenaY.filter((n) => {
       return n != undefined;
     });
+
     dlinaS = stenaX.length; // длина массива
 
     verhX.push(nomerVRyadyVerh); // добавляем в массив номер потолка в ряду
@@ -192,6 +195,7 @@ function makeMazee() {
     verhY = verhY.filter((n) => {
       return n != undefined;
     });
+
     dlinaV = verhX.length;
   }
   divs[dl2].innerHTML = "Finish"; // надпись финиш в последнем диве
@@ -478,3 +482,28 @@ window.onload = () => {
 // }
 // matrixArr(4, 4);
 // // console.log(matrix);
+ww = 6;
+shagi = [0];
+function chetny(ww) {
+  maxArrLength = 36;
+  for (i = 0; shagi[shagi.length - 1] < 35; i++) {
+    numm = Math.floor(Math.random() * 4) + 1;
+    if (numm === 1) {
+      shagi.push(shagi[shagi.length - 1] + 1);
+    } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
+      shagi.push(shagi[shagi.length - 1] + ww);
+    } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
+      shagi.push(shagi[shagi.length - 1] - 1);
+    }
+    //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
+    //   shagi.push(shagi[shagi.length - 1] - ww);
+    // }
+    //console.log(numm);
+  }
+}
+chetny(ww);
+console.log(shagi);
+
+shagi.forEach((elem) => {
+  elem !== 6 ? console.log(elem) : console.log("чет не то");
+});
