@@ -127,10 +127,67 @@ function makeMazee() {
   dl2 = dl - 1; // последняя кледка в лабиринте для финиша
   divs[dl2].classList.add("finish");
   divs[dl2].innerHTML = "finish";
-  console.log(divs);
+  //console.log(divs);
+
+  ww = 6;
+  shagi = [0];
+
+  maxArrLength = 36;
+  for (i = 0; shagi[shagi.length - 1] < 35; i++) {
+    numm = Math.floor(Math.random() * 4) + 1;
+    if (numm === 1) {
+      shagi.push(shagi[shagi.length - 1] + 1);
+    } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
+      shagi.push(shagi[shagi.length - 1] + ww);
+    } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
+      shagi.push(shagi[shagi.length - 1] - 1);
+    }
+    //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
+    //   shagi.push(shagi[shagi.length - 1] - ww);
+    // }
+    //console.log(numm);
+  }
+  console.log(shagi + " shagi");
+  arr = [];
+  let result;
+  for (k = 0; k < 36; k++) {
+    arr.push(k);
+    result = arr.filter(function (elem) {
+      if (elem !== k) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+  console.log(arr + "arr");
+
+  console.log(result + "res");
+
+  // arr.push(k);
+  // console.log(shagi);
+  // shagi.forEach((elem) => {
+  //   for (k = 0; k < 35; k++) {
+  //     console.log(k + " k");
+  //     console.log(elem + " elem");
+  //     elem !== k
+  //       ? (divs[k].style.borderLeftColor = "black")
+  //       : console.log("чет не то");
+  //   }
+
+  // добавляет лево стены
+  //console.log(numS + " NumS");
+  // nomerRyada = Math.floor(numS / userY);
+  // nomervRyady = numS - nomerRyada * userY;
+  // console.log(k + " k ");
+  //console.log(elem + " elem");
+  // });
+  // }
+  // console.log(arr + " весь массив");
+
   for (n = 1; n < Math.floor(dl); n++) {
     numV = Math.floor(Math.random() * dl); // первое рандомное
-    numS = Math.floor(Math.random() * dl); // второе рандомное
+    // numS = Math.floor(Math.random() * dl); // второе рандомное
     // numV = n;
     // numS = n;
     let nomerRyada;
@@ -138,66 +195,63 @@ function makeMazee() {
 
     let nomerRyadaVerh;
     let nomerVRyadyVerh;
-
-    // if (numS % userY !== 0 && numS !== userX * userY - 1 && numS % 2 !== 0) {
-    if (numS % userY !== 0 && numS !== userX * userY - 1 && numS % 2 !== 0) {
-      // чтобы не добавлял лишние левые границы
-      divs[numS].style.borderLeftColor = "black"; // добавляет лево стены
-      console.log(numS + " NumS");
-      nomerRyada = Math.floor(numS / userY);
-      nomervRyady = numS - nomerRyada * userY;
-    }
-    if (
-      // numV
-      userY % 2 !== 0 &&
-      numV > userY &&
-      numV !== userX * userY - 1 &&
-      (userY % 2 == 0) == (numV % 2 == 0)
-    ) {
-      //для нечетного лабиринта
-      divs[numV].style.borderTopColor = "black";
-      nomerRyadaVerh = Math.floor(numV / userY);
-      nomerVRyadyVerh = numV - nomerRyadaVerh * userY;
-    }
-
-    if (userY % 2 == 0) {
-      //Для четной ширины
-      for (g = 2; g < Number(userY) + 1; g = g + 2) {
-        //отсекаем четные строки
-        if (userY % 2 == 0 && numV > userY * (g - 1) && numV < userY * g - 1) {
-          divs[numV].style.borderTopColor = "black";
-          console.log(numV + " numV ");
-          nomerRyadaVerh = Math.floor(numV / userY);
-          nomerVRyadyVerh = numV - nomerRyadaVerh * userY;
-        }
-      }
-    }
-    // console.log(nomerRyada + " Nomer ryada");
-    // console.log(nomervRyady + " Nomer v ryady");
-
-    stenaX.push(nomervRyady); // добавляем в массив номер стены в ряду
-    stenaX = stenaX.filter((n) => {
-      return n != undefined;
-    });
-    // console.log(stenaX);
-    stenaY.push(nomerRyada); //добавляем номер ряда стены
-    stenaY = stenaY.filter((n) => {
-      return n != undefined;
-    });
-
-    dlinaS = stenaX.length; // длина массива
-
-    verhX.push(nomerVRyadyVerh); // добавляем в массив номер потолка в ряду
-    verhX = verhX.filter((n) => {
-      return n != undefined;
-    });
-    verhY.push(nomerRyadaVerh); // добавляем номер ряда потолка
-    verhY = verhY.filter((n) => {
-      return n != undefined;
-    });
-
-    dlinaV = verhX.length;
   }
+  // if (numS % userY !== 0 && numS !== userX * userY - 1 && numS % 2 !== 0) {
+
+  // {
+  // чтобы не добавлял лишние левые границы
+  // }
+  // if (
+  //   // numV
+  //   userY % 2 !== 0 &&
+  //   numV > userY &&
+  //   numV !== userX * userY - 1 &&
+  //   (userY % 2 == 0) == (numV % 2 == 0)
+  // ) {
+  //для нечетного лабиринта
+  // divs[numV].style.borderTopColor = "black";
+  // nomerRyadaVerh = Math.floor(numV / userY);
+  // nomerVRyadyVerh = numV - nomerRyadaVerh * userY;
+  // }
+
+  // if (userY % 2 == 0) {
+  //Для четной ширины
+  // for (g = 2; g < Number(userY) + 1; g = g + 2) {
+  //отсекаем четные строки
+  // if (userY % 2 == 0 && numV > userY * (g - 1) && numV < userY * g - 1) {
+  // divs[numV].style.borderTopColor = "black";
+  // console.log(numV + " numV ");
+  // nomerRyadaVerh = Math.floor(numV / userY);
+  // nomerVRyadyVerh = numV - nomerRyadaVerh * userY;
+  //  }
+  // }
+  // }
+  // console.log(nomerRyada + " Nomer ryada");
+  // console.log(nomervRyady + " Nomer v ryady");
+
+  // stenaX.push(nomervRyady); // добавляем в массив номер стены в ряду
+  // stenaX = stenaX.filter((n) => {
+  //   return n != undefined;
+  // });
+  // console.log(stenaX);
+  // stenaY.push(nomerRyada); //добавляем номер ряда стены
+  // stenaY = stenaY.filter((n) => {
+  //   return n != undefined;
+  // });
+
+  // dlinaS = stenaX.length; // длина массива
+
+  // verhX.push(nomerVRyadyVerh); // добавляем в массив номер потолка в ряду
+  // verhX = verhX.filter((n) => {
+  //   return n != undefined;
+  // });
+  // verhY.push(nomerRyadaVerh); // добавляем номер ряда потолка
+  // verhY = verhY.filter((n) => {
+  //   return n != undefined;
+  // });
+
+  // dlinaV = verhX.length;
+  // }
   divs[dl2].innerHTML = "Finish"; // надпись финиш в последнем диве
 }
 
@@ -482,28 +536,44 @@ window.onload = () => {
 // }
 // matrixArr(4, 4);
 // // console.log(matrix);
+
+// chetny(ww);
+// console.log(shagi);
+
+// shagi.forEach((elem) => {
+//   elem !== 6 ? console.log(elem) : console.log("чет не то");
+// });
+
 ww = 6;
 shagi = [0];
-function chetny(ww) {
-  maxArrLength = 36;
-  for (i = 0; shagi[shagi.length - 1] < 35; i++) {
-    numm = Math.floor(Math.random() * 4) + 1;
-    if (numm === 1) {
-      shagi.push(shagi[shagi.length - 1] + 1);
-    } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
-      shagi.push(shagi[shagi.length - 1] + ww);
-    } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
-      shagi.push(shagi[shagi.length - 1] - 1);
-    }
-    //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
-    //   shagi.push(shagi[shagi.length - 1] - ww);
-    // }
-    //console.log(numm);
-  }
-}
-chetny(ww);
-console.log(shagi);
 
-shagi.forEach((elem) => {
-  elem !== 6 ? console.log(elem) : console.log("чет не то");
-});
+maxArrLength = 36;
+for (i = 0; shagi[shagi.length - 1] < 35; i++) {
+  numm = Math.floor(Math.random() * 4) + 1;
+  if (numm === 1) {
+    shagi.push(shagi[shagi.length - 1] + 1);
+  } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
+    shagi.push(shagi[shagi.length - 1] + ww);
+  } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
+    shagi.push(shagi[shagi.length - 1] - 1);
+  }
+  //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
+  //   shagi.push(shagi[shagi.length - 1] - ww);
+  // }
+  //console.log(numm);
+}
+console.log(shagi + " shagi");
+
+arr = [];
+let result;
+
+proverk = [];
+for (l = 0; l < 36; l++) {
+  for (k = 0; k < 36; k++) {
+    arr.push(k);
+  }
+
+  proverk.push(l);
+}
+
+console.log(arr + " arr");
