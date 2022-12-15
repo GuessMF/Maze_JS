@@ -129,40 +129,40 @@ function makeMazee() {
   divs[dl2].innerHTML = "finish";
   //console.log(divs);
 
-  ww = 6;
-  shagi = [0];
+  // ww = 6;
+  // shagi = [0];
 
-  maxArrLength = 36;
-  for (i = 0; shagi[shagi.length - 1] < 35; i++) {
-    numm = Math.floor(Math.random() * 4) + 1;
-    if (numm === 1) {
-      shagi.push(shagi[shagi.length - 1] + 1);
-    } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
-      shagi.push(shagi[shagi.length - 1] + ww);
-    } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
-      shagi.push(shagi[shagi.length - 1] - 1);
-    }
-    //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
-    //   shagi.push(shagi[shagi.length - 1] - ww);
-    // }
-    //console.log(numm);
-  }
-  console.log(shagi + " shagi");
-  arr = [];
-  let result;
-  for (k = 0; k < 36; k++) {
-    arr.push(k);
-    result = arr.filter(function (elem) {
-      if (elem !== k) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-  }
-  console.log(arr + "arr");
+  // maxArrLength = 36;
+  // for (i = 0; shagi[shagi.length - 1] < 35; i++) {
+  //   numm = Math.floor(Math.random() * 4) + 1;
+  //   if (numm === 1) {
+  //     shagi.push(shagi[shagi.length - 1] + 1);
+  //   } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
+  //     shagi.push(shagi[shagi.length - 1] + ww);
+  //   } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
+  //     shagi.push(shagi[shagi.length - 1] - 1);
+  //   }
+  //   //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
+  //   //   shagi.push(shagi[shagi.length - 1] - ww);
+  //   // }
+  //   //console.log(numm);
+  // }
+  // console.log(shagi + " shagi");
+  // arr = [];
+  // let result;
+  // for (k = 0; k < 36; k++) {
+  //   arr.push(k);
+  //   result = arr.filter(function (elem) {
+  //     if (elem !== k) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
+  // }
+  // console.log(arr + "arr");
 
-  console.log(result + "res");
+  // console.log(result + "res");
 
   // arr.push(k);
   // console.log(shagi);
@@ -173,8 +173,73 @@ function makeMazee() {
   //     elem !== k
   //       ? (divs[k].style.borderLeftColor = "black")
   //       : console.log("чет не то");
-  //   }
 
+  shir = Number(userY);
+  shagi = [0];
+
+  maxArrLength = Number(userX) * Number(userY);
+
+  for (i = 0; shagi[shagi.length - 1] < maxArrLength - 1; i++) {
+    numm = Math.floor(Math.random() * 4) + 1;
+    // shagi.push(i);
+
+    if (numm === 1 && shagi[shagi.length - 1] + 1 !== maxArrLength) {
+      shagi.push(shagi[shagi.length - 1] + 1);
+    } else if (
+      numm === 2 &&
+      shagi[shagi.length - 1] <= maxArrLength - shir &&
+      shagi[shagi.length - 1] + shir !== maxArrLength
+    ) {
+      shagi.push(shagi[shagi.length - 1] + shir);
+    } else if (
+      numm === 3 &&
+      shagi[shagi.length - 1] >= 1 &&
+      shagi[shagi.length - 1] % shir !== 0 &&
+      shagi[shagi.length - 1] - 1 !== maxArrLength
+    ) {
+      shagi.push(shagi[shagi.length - 1] - 1);
+    }
+    //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
+    //   shagi.push(shagi[shagi.length - 1] - ww);
+    // }
+    //console.log(numm);
+  }
+  console.log(shagi + " shagi");
+
+  arr = [];
+  console.log(userY + " shirina?");
+  for (k = 0; k < maxArrLength; k++) {
+    k % shir !== 0 ? arr.push(k) : console.log("ee");
+  }
+  console.log(arr + " arr");
+
+  Array.prototype.diff = function (a) {
+    return this.filter(function (i) {
+      return a.indexOf(i) < 0;
+    });
+  };
+
+  let walls = arr.diff(shagi);
+  console.info(walls); // ["some5"]
+
+  //   }
+  for (n = 0; n < arr.length; n++) {
+    if (userY > 9) {
+      for (let h = 0; h < maxArrLength; h++) {
+        n1 = Math.floor(Math.random() * maxArrLength) + 1;
+        n2 = Math.floor(Math.random() * maxArrLength) + 1;
+        console.log(n1 + "n1");
+        console.log(n2 + "n2");
+        divs[walls[n1]].style.borderLeftColor = "black";
+        divs[walls[n2]].style.borderTopColor = "black";
+      }
+    } else {
+      divs[walls[n]].style.borderLeftColor = "black";
+      divs[walls[n]].style.borderTopColor = "black";
+    }
+  }
+
+  console.log(Math.floor(Math.random() * 4) + 1);
   // добавляет лево стены
   //console.log(numS + " NumS");
   // nomerRyada = Math.floor(numS / userY);
@@ -184,18 +249,18 @@ function makeMazee() {
   // });
   // }
   // console.log(arr + " весь массив");
+  // for(n=1; n=)
+  // for (n = 1; n < Math.floor(dl); n++) {
+  //   numV = Math.floor(Math.random() * dl); // первое рандомное
+  //   // numS = Math.floor(Math.random() * dl); // второе рандомное
+  //   // numV = n;
+  //   // numS = n;
+  //   let nomerRyada;
+  //   let nomervRyady;
 
-  for (n = 1; n < Math.floor(dl); n++) {
-    numV = Math.floor(Math.random() * dl); // первое рандомное
-    // numS = Math.floor(Math.random() * dl); // второе рандомное
-    // numV = n;
-    // numS = n;
-    let nomerRyada;
-    let nomervRyady;
-
-    let nomerRyadaVerh;
-    let nomerVRyadyVerh;
-  }
+  //   let nomerRyadaVerh;
+  //   let nomerVRyadyVerh;
+  // }
   // if (numS % userY !== 0 && numS !== userX * userY - 1 && numS % 2 !== 0) {
 
   // {
@@ -544,36 +609,40 @@ window.onload = () => {
 //   elem !== 6 ? console.log(elem) : console.log("чет не то");
 // });
 
-ww = 6;
-shagi = [0];
+// ww = 6;
+// shagi = [0];
 
-maxArrLength = 36;
-for (i = 0; shagi[shagi.length - 1] < 35; i++) {
-  numm = Math.floor(Math.random() * 4) + 1;
-  if (numm === 1) {
-    shagi.push(shagi[shagi.length - 1] + 1);
-  } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
-    shagi.push(shagi[shagi.length - 1] + ww);
-  } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
-    shagi.push(shagi[shagi.length - 1] - 1);
-  }
-  //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
-  //   shagi.push(shagi[shagi.length - 1] - ww);
-  // }
-  //console.log(numm);
-}
-console.log(shagi + " shagi");
+// maxArrLength = 36;
+// for (i = 0; shagi[shagi.length - 1] < 35; i++) {
+//   numm = Math.floor(Math.random() * 4) + 1;
+//   if (numm === 1) {
+//     shagi.push(shagi[shagi.length - 1] + 1);
+//   } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
+//     shagi.push(shagi[shagi.length - 1] + ww);
+//   } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
+//     shagi.push(shagi[shagi.length - 1] - 1);
+//   }
+//   //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
+//   //   shagi.push(shagi[shagi.length - 1] - ww);
+//   // }
+//   //console.log(numm);
+// }
+// console.log(shagi + " shagi");
 
-arr = [];
-let result;
+// arr = [];
 
-proverk = [];
-for (l = 0; l < 36; l++) {
-  for (k = 0; k < 36; k++) {
-    arr.push(k);
-  }
+// for (k = 0; k < 36; k++) {
+//   arr.push(k);
+// }
+// console.log(arr + " arr");
 
-  proverk.push(l);
-}
+// Array.prototype.diff = function (a) {
+//   return this.filter(function (i) {
+//     return a.indexOf(i) < 0;
+//   });
+// };
 
-console.log(arr + " arr");
+// let walls = arr.diff(shagi);
+// console.info(walls); // ["some5"]
+
+console.log(Math.floor(Math.random() * 99) + 1);
