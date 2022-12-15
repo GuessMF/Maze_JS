@@ -220,20 +220,17 @@ function makeMazee() {
   };
 
   let walls = arr.diff(shagi);
-  console.info(walls); // ["some5"]
-
-  //   }
+  console.log(walls);
+  //рабочее
+  // for (n = 0; n < arr.length; n++) {
+  //   divs[walls[n]].style.borderLeftColor = "black";
+  //   divs[walls[n]].style.borderTopColor = "black";
+  // }
+  // добавить рандом слева с краю
   for (n = 0; n < arr.length; n++) {
-    if (userY > 9) {
-      for (let h = 0; h < maxArrLength; h++) {
-        n1 = Math.floor(Math.random() * maxArrLength) + 1;
-        n2 = Math.floor(Math.random() * maxArrLength) + 1;
-        console.log(n1 + "n1");
-        console.log(n2 + "n2");
-        divs[walls[n1]].style.borderLeftColor = "black";
-        divs[walls[n2]].style.borderTopColor = "black";
-      }
-    } else {
+    rand = Math.floor(Math.random() * 4) + 1;
+    console.log(rand + " rand");
+    if (rand == 2 || rand == 3 || rand == 4) {
       divs[walls[n]].style.borderLeftColor = "black";
       divs[walls[n]].style.borderTopColor = "black";
     }
