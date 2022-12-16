@@ -127,52 +127,6 @@ function makeMazee() {
   dl2 = dl - 1; // последняя кледка в лабиринте для финиша
   divs[dl2].classList.add("finish");
   divs[dl2].innerHTML = "finish";
-  //console.log(divs);
-
-  // ww = 6;
-  // shagi = [0];
-
-  // maxArrLength = 36;
-  // for (i = 0; shagi[shagi.length - 1] < 35; i++) {
-  //   numm = Math.floor(Math.random() * 4) + 1;
-  //   if (numm === 1) {
-  //     shagi.push(shagi[shagi.length - 1] + 1);
-  //   } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
-  //     shagi.push(shagi[shagi.length - 1] + ww);
-  //   } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
-  //     shagi.push(shagi[shagi.length - 1] - 1);
-  //   }
-  //   //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
-  //   //   shagi.push(shagi[shagi.length - 1] - ww);
-  //   // }
-  //   //console.log(numm);
-  // }
-  // console.log(shagi + " shagi");
-  // arr = [];
-  // let result;
-  // for (k = 0; k < 36; k++) {
-  //   arr.push(k);
-  //   result = arr.filter(function (elem) {
-  //     if (elem !== k) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   });
-  // }
-  // console.log(arr + "arr");
-
-  // console.log(result + "res");
-
-  // arr.push(k);
-  // console.log(shagi);
-  // shagi.forEach((elem) => {
-  //   for (k = 0; k < 35; k++) {
-  //     console.log(k + " k");
-  //     console.log(elem + " elem");
-  //     elem !== k
-  //       ? (divs[k].style.borderLeftColor = "black")
-  //       : console.log("чет не то");
 
   shir = Number(userY);
   shagi = [0];
@@ -208,7 +162,6 @@ function makeMazee() {
   arr = [];
 
   for (k = 0; k < maxArrLength; k++) {
-    // k % shir !== 0 ?  : console.log("ee");
     arr.push(k);
   }
   console.log(arr + " arr");
@@ -221,16 +174,10 @@ function makeMazee() {
 
   let walls = arr.diff(shagi);
   console.log(walls);
-  //рабочее
-  // for (n = 0; n < arr.length; n++) {
-  //   divs[walls[n]].style.borderLeftColor = "black";
-  //   divs[walls[n]].style.borderTopColor = "black";
-  // }
-  // добавить рандом слева с краю
 
   for (n = 0; n < arr.length; n++) {
     rand = Math.floor(Math.random() * 4) + 1;
-    //console.log(rand + " rand");
+
     if (rand == 2 || rand == 3 || rand == 4) {
       divs[walls[n]].style.borderLeftColor = "black";
       divs[walls[n]].style.borderTopColor = "black";
@@ -238,8 +185,7 @@ function makeMazee() {
       nomervRyady = walls[n] - nomerRyada * userY;
       nomerRyadaVerh = Math.floor(walls[n] / userY);
       nomerVRyadyVerh = walls[n] - nomerRyadaVerh * userY;
-      // console.log("Num ryada" + nomerRyada);
-      // console.log("Num v ryady" + nomervRyady);
+
       stenaX.push(nomervRyady); // добавляем в массив номер стены в ряду
       stenaX = stenaX.filter((n) => {
         return n != undefined;
@@ -263,79 +209,6 @@ function makeMazee() {
       dlinaV = verhX.length;
     }
   }
-
-  // console.log(Math.floor(Math.random() * 4) + 1);
-  // добавляет лево стены
-
-  // nomervRyady = numS - nomerRyada * userY;
-
-  // for (n = 1; n < Math.floor(dl); n++) {
-  //   numV = Math.floor(Math.random() * dl); // первое рандомное
-  //   // numS = Math.floor(Math.random() * dl); // второе рандомное
-  //   // numV = n;
-  //   // numS = n;
-  //   let nomerRyada;
-  //   let nomervRyady;
-
-  //   let nomerRyadaVerh;
-  //   let nomerVRyadyVerh;
-  // }
-  // if (numS % userY !== 0 && numS !== userX * userY - 1 && numS % 2 !== 0) {
-
-  // {
-  // чтобы не добавлял лишние левые границы
-  // }
-  // if (
-  //   // numV
-  //   userY % 2 !== 0 &&
-  //   numV > userY &&
-  //   numV !== userX * userY - 1 &&
-  //   (userY % 2 == 0) == (numV % 2 == 0)
-  // ) {
-  //для нечетного лабиринта
-  // divs[numV].style.borderTopColor = "black";
-  // nomerRyadaVerh = Math.floor(numV / userY);
-  // nomerVRyadyVerh = numV - nomerRyadaVerh * userY;
-  // }
-
-  // if (userY % 2 == 0) {
-  //Для четной ширины
-  // for (g = 2; g < Number(userY) + 1; g = g + 2) {
-  //отсекаем четные строки
-  // if (userY % 2 == 0 && numV > userY * (g - 1) && numV < userY * g - 1) {
-  // divs[numV].style.borderTopColor = "black";
-  // console.log(numV + " numV ");
-  // nomerRyadaVerh = Math.floor(numV / userY);
-  // nomerVRyadyVerh = numV - nomerRyadaVerh * userY;
-  //  }
-  // }
-  // }
-  // console.log(nomerRyada + " Nomer ryada");
-  // console.log(nomervRyady + " Nomer v ryady");
-
-  // stenaX.push(nomervRyady); // добавляем в массив номер стены в ряду
-  // stenaX = stenaX.filter((n) => {
-  //   return n != undefined;
-  // });
-  // console.log(stenaX);
-  // stenaY.push(nomerRyada); //добавляем номер ряда стены
-  // stenaY = stenaY.filter((n) => {
-  //   return n != undefined;
-  // });
-
-  // dlinaS = stenaX.length; // длина массива
-
-  // verhX.push(nomerVRyadyVerh); // добавляем в массив номер потолка в ряду
-  // verhX = verhX.filter((n) => {
-  //   return n != undefined;
-  // });
-  // verhY.push(nomerRyadaVerh); // добавляем номер ряда потолка
-  // verhY = verhY.filter((n) => {
-  //   return n != undefined;
-  // });
-
-  // dlinaV = verhX.length;
-  // }
   divs[dl2].innerHTML = "Finish"; // надпись финиш в последнем диве
 }
 
@@ -458,13 +331,6 @@ window.onkeydown = function move() {
   }
 };
 
-// ()=>{
-//   if()
-//   steps % 2 == 0
-//   ? (document.body.style.overflow = "hidden")
-//   : console.log("0");
-// }
-
 bottom.addEventListener("click", () => {
   stenaX; //стены
   stenaY;
@@ -480,7 +346,6 @@ bottom.addEventListener("click", () => {
     x = x - step;
     GG.style.left = x + "px";
     console.log("x = " + x + " y = " + y);
-
     finish();
   } else if (event.target.innerHTML == "→" && x !== maxWidth) {
     //идем вправо
@@ -548,38 +413,6 @@ bottom.addEventListener("click", () => {
   }
 });
 
-// function resizeGame() {
-//   if ((x !== 0 || y !== 0) && screen.width <= 1280) {
-//     newGame();
-//   } else if ((x !== 0 || y !== 0) && screen.width >= 1280) {
-//     newGame();
-//   }
-// }
-// resizeGame();
-
-// window.addEventListener("resize", (event) => {
-//   resize = true;
-//   if (screen.width <= 1370) {
-//     step = 47;
-//     maxSq = 11;
-//     document.querySelector(".parent").style.overflow = "scroll";
-//   } else if (screen.width >= 1370) {
-//     step = 62;
-//     maxSq = 20;
-//   }
-//   resizeGame();
-// });
-
-// window.onload = () => {
-//   if (screen.width <= 1280) {
-//     step = 47;
-//     noScroll();
-//   } else {
-//     maxSq = 20;
-//     noScroll();
-//   }
-// };
-
 window.onload = () => {
   if (screen.width <= 420) {
     step = 32;
@@ -589,79 +422,3 @@ window.onload = () => {
     // console.log(userX.value);
   }
 };
-//console.log(steps);
-
-// let ph = document.createElement("img");
-// ph.setAttribute("src", "images/github4x.png");
-// ph.class = "gg";
-
-// foo = document.querySelector(".footer");
-// foo.append(ph);
-
-// function matrixArr(length, width) {
-//   let matrix = [
-//     [0, 0, 0],
-//     [0, 0, 0],
-//   ];
-//   for (w = 0; w < width; w++) {
-//     console.log(width);
-//     // matrix.push(w);
-//   }
-//   for (l = 0; l < length; l++) {
-//     console.log(length);
-//     // matrix.push(Array(0));
-//   }
-
-//   console.log(matrix);
-//   // let matrix = [];
-//   // matrix.push(Array(3));
-//   //console.log(matrix);
-//   // console.log(length);
-// }
-// matrixArr(4, 4);
-// // console.log(matrix);
-
-// chetny(ww);
-// console.log(shagi);
-
-// shagi.forEach((elem) => {
-//   elem !== 6 ? console.log(elem) : console.log("чет не то");
-// });
-
-// ww = 6;
-// shagi = [0];
-
-// maxArrLength = 36;
-// for (i = 0; shagi[shagi.length - 1] < 35; i++) {
-//   numm = Math.floor(Math.random() * 4) + 1;
-//   if (numm === 1) {
-//     shagi.push(shagi[shagi.length - 1] + 1);
-//   } else if (numm === 2 && shagi[shagi.length - 1] <= 29) {
-//     shagi.push(shagi[shagi.length - 1] + ww);
-//   } else if (numm === 3 && shagi[shagi.length - 1] >= 1) {
-//     shagi.push(shagi[shagi.length - 1] - 1);
-//   }
-//   //  else if (numm === 4 && shagi[shagi.length - 1] >= ww) {
-//   //   shagi.push(shagi[shagi.length - 1] - ww);
-//   // }
-//   //console.log(numm);
-// }
-// console.log(shagi + " shagi");
-
-// arr = [];
-
-// for (k = 0; k < 36; k++) {
-//   arr.push(k);
-// }
-// console.log(arr + " arr");
-
-// Array.prototype.diff = function (a) {
-//   return this.filter(function (i) {
-//     return a.indexOf(i) < 0;
-//   });
-// };
-
-// let walls = arr.diff(shagi);
-// console.info(walls); // ["some5"]
-
-console.log(Math.floor(Math.random() * 99) + 1);
