@@ -183,18 +183,19 @@ function makeMazee() {
     numm = Math.floor(Math.random() * 4) + 1;
 
     if (
-      numm === 1 ||
-      (numm === 2 && shagi[shagi.length - 1] + 1 !== maxArrLength)
+      numm === 1 &&
+      shagi[shagi.length - 1] + 1 !== maxArrLength &&
+      (shagi[shagi.length - 1] + 1) % shir !== 0
     ) {
       shagi.push(shagi[shagi.length - 1] + 1);
     } else if (
-      numm === 3 &&
+      numm === 2 &&
       shagi[shagi.length - 1] <= maxArrLength - shir &&
       shagi[shagi.length - 1] + shir !== maxArrLength
     ) {
       shagi.push(shagi[shagi.length - 1] + shir);
     } else if (
-      numm === 4 &&
+      numm === 3 &&
       shagi[shagi.length - 1] >= 1 &&
       shagi[shagi.length - 1] % shir !== 0 &&
       shagi[shagi.length - 1] - 1 !== maxArrLength
