@@ -10,7 +10,7 @@ let maxSq = 100;
 let verhX = []; // положение в ряду потолка
 let verhY = []; // номер ряда потолка
 let dlinaV; // длина массива с потолками
-
+let topWall;
 let divs = document.getElementsByClassName("square"); // количество созданных дивок
 
 document.querySelector(".userY").addEventListener("keyup", function () {
@@ -243,33 +243,35 @@ window.onkeydown = function move() {
   if (event.keyCode == 37 && x !== 0) {
     //идем влево
     window.scrollTo(x - step, y);
-
     document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
     border37();
     x = x - step;
+
     GG.style.left = x + "px";
     console.log("x = " + x + " y = " + y);
     finish();
   } else if (event.keyCode == 39 && x !== maxWidth) {
     //идем вправо
     window.scrollTo(x - step, y);
-
     document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
     border39();
     x = x + step;
+
     GG.style.left = x + "px";
+
     console.log("x = " + x + " y = " + y);
     finish();
   } else if (event.keyCode == 40 && y !== maxHeight) {
     // идем вниз
     window.scrollTo(x - step, y);
-    // window.scrollTo({
-    //   top: x,
-    //   behavior: "smooth",
-    // });
+
     document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
     border40();
     y = y + step;
+
     GG.style.top = y + "px";
     console.log("x = " + x + " y = " + y);
     finish();
@@ -277,11 +279,13 @@ window.onkeydown = function move() {
   } else if (event.keyCode == 38 && y !== 0) {
     // идем вверх
     window.scrollTo(x - step, y);
-
     document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
     border38();
     y = y - step;
+
     GG.style.top = y + "px";
+
     console.log("x = " + x + " y = " + y);
     finish();
   }
@@ -291,7 +295,8 @@ window.onkeydown = function move() {
     for (i = 0; i < dlinaS; i++) {
       if (x == stenaX[i] * step && y == stenaY[i] * step) {
         console.log("Стена слева" + stenaX[i] + " " + stenaY[i]);
-        x = x + step;
+        gg.setAttribute("src", "images/avatar3.png");
+        х = х - 0;
         document.body.style.overflow = "hidden";
       }
     }
@@ -302,7 +307,9 @@ window.onkeydown = function move() {
     for (i = 0; i < dlinaS; i++) {
       if (x == stenaX[i] * step - step && y == stenaY[i] * step) {
         console.log("Стена справа" + stenaX[i] + " " + stenaY[i]);
+        gg.setAttribute("src", "images/avatar3.png");
         x = x - step;
+
         document.body.style.overflow = "hidden";
       }
     }
@@ -313,7 +320,8 @@ window.onkeydown = function move() {
     for (i = 0; i < dlinaV; i++) {
       if (x == verhX[i] * step && y == verhY[i] * step) {
         console.log("Потолок наверху" + verhX[i] + " " + verhY[i]);
-        y = y + step;
+        gg.setAttribute("src", "images/avatar3.png");
+        y = у - 0;
         document.body.style.overflow = "hidden";
       }
     }
@@ -324,6 +332,7 @@ window.onkeydown = function move() {
     for (i = 0; i < dlinaV; i++) {
       if (x == verhX[i] * step && y == verhY[i] * step - step) {
         console.log("Потолок внизу" + verhX[i] + " " + verhY[i]);
+        gg.setAttribute("src", "images/avatar3.png");
         y = y - step;
         document.body.style.overflow = "hidden";
       }
