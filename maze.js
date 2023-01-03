@@ -13,6 +13,10 @@ let dlinaV; // длина массива с потолками
 let topWall;
 let divs = document.getElementsByClassName("square"); // количество созданных дивок
 
+document.querySelector(
+  ".reserved"
+).innerHTML = `© Sergey Pankov. ${new Date().getFullYear()}  All rigths reserved`;
+
 document.querySelector(".userY").addEventListener("keyup", function () {
   this.value = this.value.replace(/[^\d]/g, "");
 }); // проверка инпута на ввод только цифр
@@ -56,7 +60,6 @@ function makeMaze() {
 }
 
 function makeMazee() {
-  // основная функция создание лабиринта
   stat = true;
   userX = document.getElementById("userX").value; // высота
   userY = document.getElementById("userY").value; // ширина
@@ -66,13 +69,15 @@ function makeMazee() {
   let numS; //Рандомное число для стен
   let numV; // Рандомное число для потолков
 
+  document.querySelector(".parent").style.display = "block";
+
   if (screen.width <= 420) {
     let keyboard = document.createElement("div"); // создание главного героя
     keyboard.className = "keyboard";
     keyboard.classList.add("keyboard");
     keyboard.innerHTML = "";
     bottom.append(keyboard); // стартовая клетка для главного героя
-    // keyboard.classList.add("keyboard");
+
     let left = document.createElement("button");
     left.className = "left";
     left.innerHTML = "←";
@@ -93,24 +98,13 @@ function makeMazee() {
     down.innerHTML = "↓";
     keyboard.append(down);
   }
-  // console.log(numX + " NumX");
-  // console.log(numY + " NumY");
 
   for (m = 0; m < numX; m++) {
-    // создает в tableBody square и string перебираем высоту
     for (i = 0; i < numY; i++) {
-      // перебираем ширину
       width(); // запускаем рисовку ширины
     }
     height(); //рисовка высоты
   }
-
-  // let gg = document.createElement("div"); // создание главного героя
-  // gg.className = "gg";
-  // gg.id = "gg";
-  // gg.style.left = "0px";
-  // gg.style.top = "0px";
-  // gg.innerHTML ='' ;
 
   let gg = document.createElement("img");
   gg.setAttribute("src", "images/avatar2.png");
@@ -157,14 +151,12 @@ function makeMazee() {
       shagi.push(shagi[shagi.length - 1] - 1);
     }
   }
-  console.log(shagi + " shagi");
 
   arr = [];
 
   for (k = 0; k < maxArrLength; k++) {
     arr.push(k);
   }
-  console.log(arr + " arr");
 
   Array.prototype.diff = function (a) {
     return this.filter(function (i) {
@@ -173,7 +165,6 @@ function makeMazee() {
   };
 
   let walls = arr.diff(shagi);
-  console.log(walls);
 
   for (n = 0; n < arr.length; n++) {
     rand = Math.floor(Math.random() * 4) + 1;
@@ -213,12 +204,9 @@ function makeMazee() {
 }
 
 function finish() {
-  //отслеживает положение последней клетки
   if (x == (userY - 1) * step && y == (userX - 1) * step) {
-    console.log("FINISH");
     gg.setAttribute("src", "images/finish.jpg");
     table.classList.add("win");
-
     setTimeout(() => {
       alert("Победа!");
       location.reload();

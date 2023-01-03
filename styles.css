@@ -204,6 +204,7 @@ body {
 }
 
 .parent {
+  display: none;
   text-align: center;
   margin-top: 0;
 }
