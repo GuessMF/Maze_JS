@@ -1,4 +1,8 @@
 let stat;
+const UP = 38;
+const DOWN = 40;
+const LEFT = 37;
+const RIGHT = 39;
 let x = 0; // исходное положение ГГ
 let y = 0;
 let stenaX = []; // положение в ряду стены
@@ -10,7 +14,6 @@ let maxSq = 100;
 let verhX = []; // положение в ряду потолка
 let verhY = []; // номер ряда потолка
 let dlinaV; // длина массива с потолками
-let topWall;
 let divs = document.getElementsByClassName("square"); // количество созданных дивоconsole.log();
 
 document.querySelector(
@@ -31,16 +34,14 @@ document.querySelector(".userX").addEventListener("keyup", function () {
 }); // проверка инпута на ввод только цифр
 
 function height() {
-  // высота Х
-  let height = document.createElement("div"); // высота
+  let height = document.createElement("div"); // высота X
   height.className = "string";
   height.innerHTML = "";
   table.append(height);
 }
 
 function width() {
-  // ширина У
-  let width = document.createElement("div"); // ширины
+  let width = document.createElement("div"); // ширинa Y
   width.className = "square";
   width.innerHTML = "";
   table.append(width);
@@ -66,7 +67,6 @@ function makeMazee() {
   stat = true;
   userX = document.getElementById("userX").value; // высота
   userY = document.getElementById("userY").value; // ширина
-
   let numX = Number(userX); //числа полученные из инпутов
   let numY = Number(userY);
   let numS; //Рандомное число для стен
@@ -124,10 +124,8 @@ function makeMazee() {
   dl2 = dl - 1; // последняя кледка в лабиринте для финиша
   divs[dl2].classList.add("finish");
   divs[dl2].innerHTML = "finish";
-
   shir = Number(userY);
   shagi = [0];
-
   maxArrLength = Number(userX) * Number(userY);
 
   for (i = 0; shagi[shagi.length - 1] < maxArrLength - 1; i++) {
@@ -154,9 +152,7 @@ function makeMazee() {
       shagi.push(shagi[shagi.length - 1] - 1);
     }
   }
-
   arr = [];
-
   for (k = 0; k < maxArrLength; k++) {
     arr.push(k);
   }
@@ -168,7 +164,6 @@ function makeMazee() {
   };
 
   let walls = arr.diff(shagi);
-
   for (n = 0; n < arr.length; n++) {
     rand = Math.floor(Math.random() * 4) + 1;
 
@@ -179,18 +174,15 @@ function makeMazee() {
       nomervRyady = walls[n] - nomerRyada * userY;
       nomerRyadaVerh = Math.floor(walls[n] / userY);
       nomerVRyadyVerh = walls[n] - nomerRyadaVerh * userY;
-
       stenaX.push(nomervRyady); // добавляем в массив номер стены в ряду
       stenaX = stenaX.filter((n) => {
         return n != undefined;
       });
-      console.log(stenaX);
       stenaY.push(nomerRyada); //добавляем номер ряда стены
       stenaY = stenaY.filter((n) => {
         return n != undefined;
       });
       dlinaS = stenaX.length; // длина массива
-
       verhX.push(nomerVRyadyVerh); // добавляем в массив номер потолка в ряду
       verhX = verhX.filter((n) => {
         return n != undefined;
@@ -199,7 +191,6 @@ function makeMazee() {
       verhY = verhY.filter((n) => {
         return n != undefined;
       });
-
       dlinaV = verhX.length;
     }
   }
@@ -235,195 +226,123 @@ function newGame() {
   table.classList.remove("win");
 }
 
-window.onkeydown = function move() {
-  stenaX; //стены
-  stenaY;
-  verhX; //потолки
-  verhY;
+function border37() {
+  for (i = 0; i < dlinaS; i++) {
+    if (x == stenaX[i] * step && y == stenaY[i] * step) {
+      gg.setAttribute("src", "images/avatar3.png");
+      х = х - 0;
+      document.body.style.overflow = "hidden";
+    }
+  }
+}
 
+function border39() {
+  for (i = 0; i < dlinaS; i++) {
+    if (x == stenaX[i] * step - step && y == stenaY[i] * step) {
+      gg.setAttribute("src", "images/avatar3.png");
+      x = x - step;
+      document.body.style.overflow = "hidden";
+    }
+  }
+}
+
+function border38() {
+  for (i = 0; i < dlinaV; i++) {
+    if (x == verhX[i] * step && y == verhY[i] * step) {
+      gg.setAttribute("src", "images/avatar3.png");
+      y = у - 0;
+      document.body.style.overflow = "hidden";
+    }
+  }
+}
+
+function border40() {
+  for (i = 0; i < dlinaV; i++) {
+    if (x == verhX[i] * step && y == verhY[i] * step - step) {
+      gg.setAttribute("src", "images/avatar3.png");
+      y = y - step;
+      document.body.style.overflow = "hidden";
+    }
+  }
+}
+
+window.onkeydown = function move() {
   let GG = document.getElementById("gg");
   let maxWidth = (userY - 1) * step;
   let maxHeight = (userX - 1) * step;
 
-  if (event.keyCode == 37 && x !== 0) {
-    //идем влево
+  x == 0 ? GG.setAttribute("src", "images/avatar2.png") : null;
+  if (event.keyCode == LEFT && x !== 0) {
     window.scrollTo(x - step, y);
     document.body.style.overflow = "auto";
     gg.setAttribute("src", "images/avatar2.png");
     border37();
     x = x - step;
-
     GG.style.left = x + "px";
-    console.log("x = " + x + " y = " + y);
     finish();
-  } else if (event.keyCode == 39 && x !== maxWidth) {
-    //идем вправо
+  } else if (event.keyCode == RIGHT && x !== maxWidth) {
     window.scrollTo(x - step, y);
     document.body.style.overflow = "auto";
     gg.setAttribute("src", "images/avatar2.png");
     border39();
     x = x + step;
-
     GG.style.left = x + "px";
-
-    console.log("x = " + x + " y = " + y);
     finish();
-  } else if (event.keyCode == 40 && y !== maxHeight) {
-    // идем вниз
+  } else if (event.keyCode == DOWN && y !== maxHeight) {
     window.scrollTo(x - step, y);
-
     document.body.style.overflow = "auto";
     gg.setAttribute("src", "images/avatar2.png");
     border40();
     y = y + step;
-
     GG.style.top = y + "px";
-    console.log("x = " + x + " y = " + y);
     finish();
-    // console.log(y);
-  } else if (event.keyCode == 38 && y !== 0) {
-    // идем вверх
+  } else if (event.keyCode == UP && y !== 0) {
     window.scrollTo(x - step, y);
     document.body.style.overflow = "auto";
     gg.setAttribute("src", "images/avatar2.png");
     border38();
     y = y - step;
-
     GG.style.top = y + "px";
-
-    console.log("x = " + x + " y = " + y);
     finish();
-  }
-
-  function border37() {
-    //стена для стрелки влево
-    for (i = 0; i < dlinaS; i++) {
-      if (x == stenaX[i] * step && y == stenaY[i] * step) {
-        console.log("Стена слева" + stenaX[i] + " " + stenaY[i]);
-        gg.setAttribute("src", "images/avatar3.png");
-        х = х - 0;
-        document.body.style.overflow = "hidden";
-      }
-    }
-  }
-
-  function border39() {
-    //стена для стрелки вправо
-    for (i = 0; i < dlinaS; i++) {
-      if (x == stenaX[i] * step - step && y == stenaY[i] * step) {
-        console.log("Стена справа" + stenaX[i] + " " + stenaY[i]);
-        gg.setAttribute("src", "images/avatar3.png");
-        x = x - step;
-
-        document.body.style.overflow = "hidden";
-      }
-    }
-  }
-
-  function border38() {
-    // стена для стрелки вверх
-    for (i = 0; i < dlinaV; i++) {
-      if (x == verhX[i] * step && y == verhY[i] * step) {
-        console.log("Потолок наверху" + verhX[i] + " " + verhY[i]);
-        gg.setAttribute("src", "images/avatar3.png");
-        y = у - 0;
-        document.body.style.overflow = "hidden";
-      }
-    }
-  }
-
-  function border40() {
-    // стена для стрелки вниз
-    for (i = 0; i < dlinaV; i++) {
-      if (x == verhX[i] * step && y == verhY[i] * step - step) {
-        console.log("Потолок внизу" + verhX[i] + " " + verhY[i]);
-        gg.setAttribute("src", "images/avatar3.png");
-        y = y - step;
-        document.body.style.overflow = "hidden";
-      }
-    }
   }
 };
 
 bottom.addEventListener("click", () => {
-  stenaX; //стены
-  stenaY;
-  verhX; //потолки
-  verhY;
-
   let GG = document.getElementById("gg");
   let maxWidth = (userY - 1) * step;
   let maxHeight = (userX - 1) * step;
   if (event.target.innerHTML == "←" && x !== 0) {
-    //идем влево
+    window.scrollTo(x - step, y);
+    document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
     border37();
     x = x - step;
     GG.style.left = x + "px";
-    console.log("x = " + x + " y = " + y);
     finish();
   } else if (event.target.innerHTML == "→" && x !== maxWidth) {
-    //идем вправо
+    window.scrollTo(x - step, y);
+    document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
     border39();
     x = x + step;
     GG.style.left = x + "px";
-    console.log("x = " + x + " y = " + y);
     finish();
   } else if (event.target.innerHTML == "↓" && y !== maxHeight) {
-    // идем вниз
+    window.scrollTo(x - step, y);
+    document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
     border40();
     y = y + step;
     GG.style.top = y + "px";
-    console.log("x = " + x + " y = " + y);
     finish();
-    // console.log(y);
   } else if (event.target.innerHTML == "↑" && y !== 0) {
-    // идем вверх
+    window.scrollTo(x - step, y);
+    document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
     border38();
     y = y - step;
     GG.style.top = y + "px";
-    console.log("x = " + x + " y = " + y);
     finish();
-  }
-
-  function border37() {
-    //стена для стрелки влево
-    for (i = 0; i < dlinaS; i++) {
-      if (x == stenaX[i] * step && y == stenaY[i] * step) {
-        console.log("Стена слева" + stenaX[i] + " " + stenaY[i]);
-        x = x + step;
-      }
-    }
-  }
-
-  function border39() {
-    //стена для стрелки вправо
-    for (i = 0; i < dlinaS; i++) {
-      if (x == stenaX[i] * step - step && y == stenaY[i] * step) {
-        console.log("Стена справа" + stenaX[i] + " " + stenaY[i]);
-        x = x - step;
-      }
-    }
-  }
-
-  function border38() {
-    // стена для стрелки вверх
-    for (i = 0; i < dlinaV; i++) {
-      if (x == verhX[i] * step && y == verhY[i] * step) {
-        console.log("Потолок наверху" + verhX[i] + " " + verhY[i]);
-        y = y + step;
-      }
-    }
-  }
-
-  function border40() {
-    // стена для стрелки вниз
-    for (i = 0; i < dlinaV; i++) {
-      if (x == verhX[i] * step && y == verhY[i] * step - step) {
-        console.log("Потолок внизу" + verhX[i] + " " + verhY[i]);
-        y = y - step;
-        document.body.style.overflow = "hidden";
-      }
-    }
   }
 });
 
@@ -433,34 +352,5 @@ window.onload = () => {
     maxSq = 50;
     userX.placeholder = "Высота лабиринта Max 50 ";
     userY.placeholder = "Ширина лабиринта Max 50 ";
-    // console.log(userX.value);
   }
 };
-
-// stat  undefined
-//  x  0
-//  y  0
-//  stenaX
-//  stenaY
-//  dlinaS  undefined
-//  step  62
-//  steps  0
-//  maxSq  100
-//  verhX
-//  verhY
-//  dlinaV  undefined
-//  topWall  undefined
-
-// stat  true
-// x  124
-// y  124
-// stenaX  0
-// stenaY  2
-// dlinaS  1
-// step  62
-// steps  0
-// maxSq  100
-// verhX  0
-// verhY  2
-// dlinaV  1
-// topWall  undefined
