@@ -11,12 +11,30 @@ let verhX = []; // положение в ряду потолка
 let verhY = []; // номер ряда потолка
 let dlinaV; // длина массива с потолками
 let topWall;
-let divs = document.getElementsByClassName("square"); // количество созданных дивок
+let divs = document.getElementsByClassName("square"); // количество созданных дивоconsole.log();
+console.log("stat  " + stat);
+console.log("x  " + x);
+console.log("y  " + y);
+console.log("stenaX  " + stenaX);
+console.log("stenaY  " + stenaY);
+console.log("dlinaS  " + dlinaS);
+console.log("step  " + step);
+console.log("steps  " + steps);
+console.log("maxSq  " + maxSq);
+console.log("verhX  " + verhX);
+console.log("verhY  " + verhY);
+console.log("dlinaV  " + dlinaV);
+console.log("topWall  " + topWall);
 
 document.querySelector(
   ".reserved"
 ).innerHTML = `© Sergey Pankov. ${new Date().getFullYear()}  All rigths reserved`;
 
+document.addEventListener("keydown", () => {
+  if (event.key === "Enter") {
+    makeMaze();
+  }
+});
 document.querySelector(".userY").addEventListener("keyup", function () {
   this.value = this.value.replace(/[^\d]/g, "");
 }); // проверка инпута на ввод только цифр
@@ -49,13 +67,11 @@ function makeMaze() {
     userX.value > 0
   ) {
     makeMazee();
-    // console.log(maxSq + " maxSq");
   } else if (stat == true) {
-    alert("Вы уже играете");
+    newGame();
+    makeMazee();
   } else if (userY.value <= 0 || userX.value <= 0) {
-    alert("Введите второе число");
-  } else {
-    alert("Введите число меньше " + `${maxSq}`);
+    alert("Введите размеры лабиринта");
   }
 }
 
@@ -209,13 +225,27 @@ function finish() {
     table.classList.add("win");
     setTimeout(() => {
       alert("Победа!");
-      location.reload();
+      newGame();
     }, 1500);
   }
 }
 
 function newGame() {
-  location.reload();
+  x = 0;
+  y = 0;
+  stenaX = [];
+  stenaY = [];
+  dlinaS = undefined;
+  step = 62;
+  steps = 0;
+  maxSq = 100;
+  verhX = [];
+  verhY = [];
+  dlinaV = undefined;
+  topWall = undefined;
+  table.innerHTML = "";
+  document.querySelector(".parent").style.display = "none";
+  table.classList.remove("win");
 }
 
 window.onkeydown = function move() {
@@ -419,3 +449,31 @@ window.onload = () => {
     // console.log(userX.value);
   }
 };
+
+// stat  undefined
+//  x  0
+//  y  0
+//  stenaX
+//  stenaY
+//  dlinaS  undefined
+//  step  62
+//  steps  0
+//  maxSq  100
+//  verhX
+//  verhY
+//  dlinaV  undefined
+//  topWall  undefined
+
+// stat  true
+// x  124
+// y  124
+// stenaX  0
+// stenaY  2
+// dlinaS  1
+// step  62
+// steps  0
+// maxSq  100
+// verhX  0
+// verhY  2
+// dlinaV  1
+// topWall  undefined

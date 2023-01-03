@@ -4,9 +4,6 @@ html {
 body {
   background-color: #393b44;
   touch-action: manipulation;
-  /* min-height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto; */
   overflow: auto;
 }
 .header {
@@ -24,7 +21,6 @@ body {
   margin-bottom: 2%;
   margin-left: 143px;
   padding-left: 10px;
-  /* border-color: rgb(95, 94, 94); */
   font-family: "Roboto", sans-serif;
   box-shadow: 0 0 7px 0 black;
   border: 0;
@@ -54,17 +50,14 @@ body {
   font-weight: 100;
 }
 .inputWidth {
-  font-size: 22px;
+  font-size: 20px;
   margin-right: 5px;
   font-family: "Roboto", sans-serif;
   font-weight: 100;
 }
 .topContainer {
-  /* background-color: aqua; */
   width: 500px;
   margin: 0 auto;
-  /* text-align: center; */
-  /* border: white solid 1px; */
 }
 .top {
   margin: 0 auto;
@@ -106,19 +99,13 @@ body {
 }
 .tableBody {
   z-index: 1;
-  /* text-align: center; */
   position: relative;
   background-color: rgb(255, 0, 0);
-  /* width: auto;
-  height: auto; */
   width: max-content;
   height: max-content;
-
   overflow: scroll;
   border: black solid 0.5px;
   display: inline-block;
-
-  /* overflow: auto; */
 }
 .tableBody::-webkit-scrollbar {
   width: 0;
@@ -155,9 +142,7 @@ body {
   width: 60px;
   height: 60px;
   background-color: #8d93ab;
-
   border: #8d93ab solid 1px;
-  /* border: black solid 0.5px; */
   float: left;
 }
 
@@ -168,13 +153,10 @@ body {
   left: 0px;
   top: 0px;
   background-color: black;
-  /* border-radius: 50%; */
   box-shadow: 0 0 7px 0 black;
   border: 0;
   border-radius: 40px;
   position: absolute;
-  /* text-align: center; */
-
   transition-property: left, top;
   transition-duration: 1s;
 }
@@ -219,30 +201,6 @@ body {
   height: 50px;
 }
 
-/* @media screen and (max-width: 1280px) {
-  .gg {
-    width: 45px;
-    height: 45px;
-  }
-
-  .square {
-    width: 45px;
-    height: 45px;
-  }
-  .tablerow {
-    width: 45px;
-    height: 45px;
-  }
-  .tablecell {
-    width: 45px;
-    height: 45px;
-  }
-  .string {
-    width: 45px;
-    height: 45px;
-  }
-} */
-
 @media screen and (max-width: 420px) {
   body {
     width: auto;
@@ -251,7 +209,6 @@ body {
     width: 30px;
     height: 30px;
   }
-
   .square {
     width: 30px;
     height: 30px;
@@ -338,7 +295,6 @@ body {
   .right {
     width: 80px;
     height: 80px;
-    /* margin-right: 25px; */
     border-radius: 50%;
     border: none;
     font-size: 20px;
@@ -352,7 +308,6 @@ body {
     height: 80px;
     border-radius: 50%;
     border: none;
-    /* margin-right: 10px; */
     font-size: 20px;
     background-color: #8d93ab;
     font-family: "Roboto", sans-serif;
@@ -376,6 +331,6 @@ body {
   select:focus,
   textarea:focus,
   input:focus {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
