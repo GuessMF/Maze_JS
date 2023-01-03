@@ -12,19 +12,6 @@ let verhY = []; // номер ряда потолка
 let dlinaV; // длина массива с потолками
 let topWall;
 let divs = document.getElementsByClassName("square"); // количество созданных дивоconsole.log();
-console.log("stat  " + stat);
-console.log("x  " + x);
-console.log("y  " + y);
-console.log("stenaX  " + stenaX);
-console.log("stenaY  " + stenaY);
-console.log("dlinaS  " + dlinaS);
-console.log("step  " + step);
-console.log("steps  " + steps);
-console.log("maxSq  " + maxSq);
-console.log("verhX  " + verhX);
-console.log("verhY  " + verhY);
-console.log("dlinaV  " + dlinaV);
-console.log("topWall  " + topWall);
 
 document.querySelector(
   ".reserved"
@@ -443,9 +430,9 @@ bottom.addEventListener("click", () => {
 window.onload = () => {
   if (screen.width <= 420) {
     step = 32;
-    maxSq = 11;
-    userX.placeholder = "Высота лабиринта Max 11";
-    userY.placeholder = "Ширина лабиринта Max 11";
+    maxSq = 50;
+    userX.placeholder = "Высота лабиринта Max 50 ";
+    userY.placeholder = "Ширина лабиринта Max 50 ";
     // console.log(userX.value);
   }
 };
