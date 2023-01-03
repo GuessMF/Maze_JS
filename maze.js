@@ -130,7 +130,6 @@ function makeMazee() {
   dl = divs.length; //колличество клеток в лабиринте
   dl2 = dl - 1; // последняя кледка в лабиринте для финиша
   divs[dl2].classList.add("finish");
-  //divs[dl2].innerHTML = "finish";
   divs[dl2].append(finish);
   shir = Number(userY);
   shagi = [0];
@@ -138,7 +137,6 @@ function makeMazee() {
 
   for (i = 0; shagi[shagi.length - 1] < maxArrLength - 1; i++) {
     numm = Math.floor(Math.random() * 4) + 1;
-
     if (
       numm === 1 &&
       shagi[shagi.length - 1] + 1 !== maxArrLength &&
@@ -174,7 +172,6 @@ function makeMazee() {
   let walls = arr.diff(shagi);
   for (n = 0; n < arr.length; n++) {
     rand = Math.floor(Math.random() * 4) + 1;
-
     if (rand == 2 || rand == 3 || rand == 4) {
       walls[n] % Number(userY) == 0
         ? (divs[walls[n]].style.borderLeftColor = "#8d93ab")
@@ -348,7 +345,6 @@ function move(direction) {
   let GG = document.getElementById("gg");
   let maxWidth = (userY - 1) * step;
   let maxHeight = (userX - 1) * step;
-
   if (direction == LEFT && x !== 0) {
     window.scrollTo(x - step, y);
     document.body.style.overflow = "auto";
