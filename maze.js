@@ -228,7 +228,7 @@ function newGame() {
 
 function border37() {
   for (i = 0; i < dlinaS; i++) {
-    if (x == stenaX[i] * step && y == stenaY[i] * step) {
+    if ((x == stenaX[i] * step && y == stenaY[i] * step) || x == 0) {
       gg.setAttribute("src", "images/avatar3.png");
       х = х - 0;
       document.body.style.overflow = "hidden";
@@ -271,7 +271,6 @@ window.onkeydown = function move() {
   let maxWidth = (userY - 1) * step;
   let maxHeight = (userX - 1) * step;
 
-  x == 0 ? GG.setAttribute("src", "images/avatar2.png") : null;
   if (event.keyCode == LEFT && x !== 0) {
     window.scrollTo(x - step, y);
     document.body.style.overflow = "auto";
@@ -304,6 +303,14 @@ window.onkeydown = function move() {
     y = y - step;
     GG.style.top = y + "px";
     finish();
+  } else if (event.keyCode == LEFT && x == 0) {
+    gg.setAttribute("src", "images/avatar3.png");
+  } else if (event.keyCode == RIGHT && x == maxWidth) {
+    gg.setAttribute("src", "images/avatar3.png");
+  } else if (event.keyCode == DOWN && y == maxHeight) {
+    gg.setAttribute("src", "images/avatar3.png");
+  } else if (event.keyCode == UP && y == 0) {
+    gg.setAttribute("src", "images/avatar3.png");
   }
 };
 
