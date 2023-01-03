@@ -160,6 +160,10 @@ body {
   transition-property: left, top;
   transition-duration: 1s;
 }
+.chest {
+  width: 60px;
+  height: 60px;
+}
 
 .finish {
   text-align: center;

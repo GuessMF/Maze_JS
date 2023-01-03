@@ -119,11 +119,19 @@ function makeMazee() {
   gg.style.top = "0px";
   gg.innerHTML = "";
 
+  let finish = document.createElement("img");
+  finish.setAttribute("src", "images/chest.png");
+  finish.className = "chest";
+  finish.style.width = 60;
+  finish.style.height = 60;
+  finish.innerHTML = "";
+
   divs[0].append(gg); // стартовая клетка для главного героя
   dl = divs.length; //колличество клеток в лабиринте
   dl2 = dl - 1; // последняя кледка в лабиринте для финиша
   divs[dl2].classList.add("finish");
-  divs[dl2].innerHTML = "finish";
+  //divs[dl2].innerHTML = "finish";
+  divs[dl2].append(finish);
   shir = Number(userY);
   shagi = [0];
   maxArrLength = Number(userX) * Number(userY);
@@ -168,8 +176,13 @@ function makeMazee() {
     rand = Math.floor(Math.random() * 4) + 1;
 
     if (rand == 2 || rand == 3 || rand == 4) {
-      divs[walls[n]].style.borderLeftColor = "black";
-      divs[walls[n]].style.borderTopColor = "black";
+      walls[n] % Number(userY) == 0
+        ? (divs[walls[n]].style.borderLeftColor = "#8d93ab")
+        : (divs[walls[n]].style.borderLeftColor = "black");
+      walls[n] > Number(userY) - 1
+        ? (divs[walls[n]].style.borderTopColor = "black")
+        : (divs[walls[n]].style.borderTopColor = "#8d93ab");
+
       nomerRyada = Math.floor(walls[n] / userY);
       nomervRyady = walls[n] - nomerRyada * userY;
       nomerRyadaVerh = Math.floor(walls[n] / userY);
@@ -200,7 +213,9 @@ function makeMazee() {
 function finish() {
   if (x == (userY - 1) * step && y == (userX - 1) * step) {
     gg.setAttribute("src", "images/finish.jpg");
-    table.classList.add("win");
+    setTimeout(() => {
+      table.classList.add("win");
+    }, 300);
     setTimeout(() => {
       alert("Победа!");
       newGame();
@@ -266,54 +281,6 @@ function border40() {
   }
 }
 
-window.onkeydown = function move() {
-  let GG = document.getElementById("gg");
-  let maxWidth = (userY - 1) * step;
-  let maxHeight = (userX - 1) * step;
-
-  if (event.keyCode == LEFT && x !== 0) {
-    window.scrollTo(x - step, y);
-    document.body.style.overflow = "auto";
-    gg.setAttribute("src", "images/avatar2.png");
-    border37();
-    x = x - step;
-    GG.style.left = x + "px";
-    finish();
-  } else if (event.keyCode == RIGHT && x !== maxWidth) {
-    window.scrollTo(x - step, y);
-    document.body.style.overflow = "auto";
-    gg.setAttribute("src", "images/avatar2.png");
-    border39();
-    x = x + step;
-    GG.style.left = x + "px";
-    finish();
-  } else if (event.keyCode == DOWN && y !== maxHeight) {
-    window.scrollTo(x - step, y);
-    document.body.style.overflow = "auto";
-    gg.setAttribute("src", "images/avatar2.png");
-    border40();
-    y = y + step;
-    GG.style.top = y + "px";
-    finish();
-  } else if (event.keyCode == UP && y !== 0) {
-    window.scrollTo(x - step, y);
-    document.body.style.overflow = "auto";
-    gg.setAttribute("src", "images/avatar2.png");
-    border38();
-    y = y - step;
-    GG.style.top = y + "px";
-    finish();
-  } else if (event.keyCode == LEFT && x == 0) {
-    gg.setAttribute("src", "images/avatar3.png");
-  } else if (event.keyCode == RIGHT && x == maxWidth) {
-    gg.setAttribute("src", "images/avatar3.png");
-  } else if (event.keyCode == DOWN && y == maxHeight) {
-    gg.setAttribute("src", "images/avatar3.png");
-  } else if (event.keyCode == UP && y == 0) {
-    gg.setAttribute("src", "images/avatar3.png");
-  }
-};
-
 bottom.addEventListener("click", () => {
   let GG = document.getElementById("gg");
   let maxWidth = (userY - 1) * step;
@@ -352,6 +319,79 @@ bottom.addEventListener("click", () => {
     finish();
   }
 });
+
+window.addEventListener(
+  "keydown",
+  (function (canMove) {
+    return function (event) {
+      if (!canMove) return false;
+      canMove = false;
+      setTimeout(function () {
+        canMove = true;
+      }, 600);
+      switch (event.keyCode) {
+        case 39:
+          return move(RIGHT);
+        case 40:
+          return move(DOWN);
+        case 37:
+          return move(LEFT);
+        case 38:
+          return move(UP);
+      }
+    };
+  })(true),
+  false
+);
+
+function move(direction) {
+  let GG = document.getElementById("gg");
+  let maxWidth = (userY - 1) * step;
+  let maxHeight = (userX - 1) * step;
+
+  if (direction == LEFT && x !== 0) {
+    window.scrollTo(x - step, y);
+    document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
+    border37();
+    x = x - step;
+    GG.style.left = x + "px";
+    finish();
+  } else if (direction == RIGHT && x !== maxWidth) {
+    window.scrollTo(x - step, y);
+    document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
+    border39();
+    x = x + step;
+    GG.style.left = x + "px";
+    finish();
+  } else if (direction == DOWN && y !== maxHeight) {
+    window.scrollTo(x - step, y);
+    document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
+    border40();
+    y = y + step;
+    GG.style.top = y + "px";
+    finish();
+  } else if (direction == UP && y !== 0) {
+    window.scrollTo(x - step, y);
+    document.body.style.overflow = "auto";
+    gg.setAttribute("src", "images/avatar2.png");
+    border38();
+    y = y - step;
+    GG.style.top = y + "px";
+    finish();
+  } else if (direction == LEFT && x == 0) {
+    gg.setAttribute("src", "images/avatar3.png");
+  } else if (direction == RIGHT && x == maxWidth) {
+    gg.setAttribute("src", "images/avatar3.png");
+  } else if (direction == DOWN && y == maxHeight) {
+    gg.setAttribute("src", "images/avatar3.png");
+  } else if (direction == UP && y == 0) {
+    gg.setAttribute("src", "images/avatar3.png");
+  }
+  console.log(Number(usery));
+}
 
 window.onload = () => {
   if (screen.width <= 420) {
