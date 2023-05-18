@@ -100,7 +100,7 @@ body {
 .tableBody {
   z-index: 1;
   position: relative;
-  background-color: rgb(255, 0, 0);
+  /* // background-color: rgb(255, 0, 0); */
   width: max-content;
   height: max-content;
   overflow: scroll;

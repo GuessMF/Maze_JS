@@ -122,8 +122,8 @@ function makeMazee() {
   let finish = document.createElement("img");
   finish.setAttribute("src", "images/chest.png");
   finish.className = "chest";
-  finish.style.width = 60;
-  finish.style.height = 60;
+  finish.style.width = "100%";
+  finish.style.height = "100%";
   finish.innerHTML = "";
 
   divs[0].append(gg); // стартовая клетка для главного героя
